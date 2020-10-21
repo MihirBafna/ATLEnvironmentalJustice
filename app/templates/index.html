@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="../static/css/index.css">
+<style>
+    body {
+
+        background-image: url("../static/img/AtlantaBackground.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* opacity: 0.5;    */
+
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="background">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h2 class="masthead-brand">ATLEnvJustice</h2>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link" href="/map">Map</a>
+                    <a class="nav-link" href="/info">Info</a>
+                    <a class="nav-link" href="/solutions">What To Do?</a>
+                </nav>
+            </div>
+        </header>
+        <main role="main" class="inner cover">
+            <div class="mainmodal">
+                <hr style="background-color: rgba(38, 47, 56, 0.3);">
+                <h1 class="cover-heading" style="padding-top: 5%;">Atlanta Environmental Justice</h1>
+                <!-- <hr class="line"> -->
+                <p class="lead" style="padding-left: 2%; padding-right: 2%;">Atlanta is home to more than a half million people; all of different racial and socioeconomic backgrounds. It seems
+                logical that everyone would have the same quality of water,
+                air, and life. Unfortunately, this is not the case.</p>
+                <p class="lead">
+                    <a id="start" class="btn btn-lg btn-secondary">Learn More</a>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer mastfoot mt-auto">
+        <div class=" inner">
+            <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a href="https://github.com/brettpietruska">Brett Pietruszka</a> </p>
+        </div>
+    </footer>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+.DS_Store
+./env/
+testdata/
+__pycache__/
+.vscode/
+# Environments
+.env
+.venv
+env/bin/
+venv/
+ENV/
+env.bak/
+venv.bak/
+env/
+
+
+#Config
+config.py
+
+#Socket
+app.sock
