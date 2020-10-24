@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="../static/css/index.css">
+<link rel="stylesheet" href="../static/css/map.css">
+<style>
+    body {
+        background-color: #323639;
+/* 
+        background-image: url("../static/img/AtlantaBackground.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; */
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="background">
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+        <header class="masthead">
+            <div class="inner">
+                <h2 class="masthead-brand">ATLEnvJustice</h2>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link active" href="/map">Map</a>
+                    <a class="nav-link" href="/info">Info</a>
+                    <a class="nav-link" href="/solutions">What To Do?</a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div style="height: 80%; margin-top: 5px; margin-left: 2%; margin-right: 2%;">
+        <div id="mapid"></div>
+    </div>
+    <footer class="footer mastfoot mt-auto">
+        <div class=" inner">
+            <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a
+                    href="https://github.com/brettpietruska">Brett Pietruszka</a> </p>
+        </div>
+    </footer>
+</div>
+
+<script src="../static/js/map.js"></script>
+{% endblock %}
