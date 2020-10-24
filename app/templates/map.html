@@ -33,8 +33,18 @@
             </div>
         </header>
     </div>
-    <div style="height: 80%; margin-top: 5px; margin-left: 2%; margin-right: 2%;">
-        <div id="mapid"></div>
+    <div class="row">
+        <div class="col-9">
+            <h3 style="font-weight: 100;">Interactive Map:</h3>
+            <hr style="height: 0px"></hr>
+            <div style="height: 80%; margin-top: 5px; margin-left: 2%; margin-right: 2%;">
+                <div id="mapid"></div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h3 style="font-weight: 100;">Toggle:</h3>
+            <hr style="height: 0px"/>
+        </div>
     </div>
     <footer class="footer mastfoot mt-auto">
         <div class=" inner">
@@ -43,6 +53,6 @@
         </div>
     </footer>
 </div>
-
+<script src="../static/js/atlantacounties.js"></script>
 <script src="../static/js/map.js"></script>
 {% endblock %}
