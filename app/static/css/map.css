@@ -1,4 +1,28 @@
 #mapid {
     height: 80vh;
     width: 100%;
+    border-radius: 10px;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background-color: rgba(52, 51, 50, 1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border: #3182bd solid 5px;
+    border-radius: 5px;
+    text-align: left;
+}
+.info h4 {
+    text-align: center;
+    margin: 0 0 5px;
+    color:white;
+}
+
+#panel{
+    background-color: rgba(52, 51, 50, 1);
+    height: 9%;
+    margin-right: 5%;
+    border-radius: 10px;
 }

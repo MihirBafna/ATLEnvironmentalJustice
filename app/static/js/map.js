@@ -32,6 +32,9 @@ $(document).ready(function () {
             fillOpacity: 0.8
         });
 
+        info.update(layer.feature.properties);
+
+
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
             layer.bringToFront();
         }
@@ -39,6 +42,7 @@ $(document).ready(function () {
 
     function resetHighlight(e) {
         geojson.resetStyle(e.target);
+        info.update();
     }
 
     function zoomToFeature(e) {
@@ -58,6 +62,22 @@ $(document).ready(function () {
         onEachFeature: onEachFeature
     }).addTo(map);
 
+    var info = L.control();
+
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+        this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
+            '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> '  + props.Contaminants
+            : 'Hover over a state');
+    };
+
+    info.addTo(map);
 
     L.marker([33.742612777346885, -84.38873291015625]).addTo(map);
 

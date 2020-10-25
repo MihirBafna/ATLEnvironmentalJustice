@@ -10,6 +10,8 @@ var data = {
                 "AFFGEOID": "0500000US13247",
                 "GEOID": "13247",
                 "NAME": "Rockdale",
+                "TapWater": "10",
+                "Contaminants" : "13",
                 "LSAD": "06",
                 "ALAND": 336205278,
                 "AWATER": 5926396
@@ -79,6 +81,8 @@ var data = {
                 "AFFGEOID": "0500000US13297",
                 "GEOID": "13297",
                 "NAME": "Walton",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 843525615,
                 "AWATER": 11170130
@@ -156,6 +160,8 @@ var data = {
                 "AFFGEOID": "0500000US13015",
                 "GEOID": "13015",
                 "NAME": "Bartow",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1190219024,
                 "AWATER": 27368325
@@ -225,6 +231,8 @@ var data = {
                 "AFFGEOID": "0500000US13057",
                 "GEOID": "13057",
                 "NAME": "Cherokee",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1092190453,
                 "AWATER": 32938535
@@ -314,6 +322,8 @@ var data = {
                 "AFFGEOID": "0500000US13117",
                 "GEOID": "13117",
                 "NAME": "Forsyth",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 580297280,
                 "AWATER": 59743068
@@ -383,6 +393,8 @@ var data = {
                 "AFFGEOID": "0500000US13139",
                 "GEOID": "13139",
                 "NAME": "Hall",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1017306098,
                 "AWATER": 94561948
@@ -472,6 +484,8 @@ var data = {
                 "AFFGEOID": "0500000US13223",
                 "GEOID": "13223",
                 "NAME": "Paulding",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 808832044,
                 "AWATER": 5309331
@@ -553,6 +567,8 @@ var data = {
                 "AFFGEOID": "0500000US13067",
                 "GEOID": "13067",
                 "NAME": "Cobb",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 879701643,
                 "AWATER": 12597293
@@ -641,7 +657,9 @@ var data = {
                 "COUNTYNS": "01694833",
                 "AFFGEOID": "0500000US13121",
                 "GEOID": "13121",
-                "NAME": "Fulton",
+                "NAME": "Atlanta-Fulton",
+                "TapWater": "8",
+                "Contaminants": "10", 
                 "LSAD": "06",
                 "ALAND": 1364178479,
                 "AWATER": 19792701
@@ -795,6 +813,8 @@ var data = {
                 "AFFGEOID": "0500000US13045",
                 "GEOID": "13045",
                 "NAME": "Carroll",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1292492346,
                 "AWATER": 12284897
@@ -880,6 +900,8 @@ var data = {
                 "AFFGEOID": "0500000US13097",
                 "GEOID": "13097",
                 "NAME": "Douglas",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 518293193,
                 "AWATER": 2485429
@@ -941,6 +963,8 @@ var data = {
                 "AFFGEOID": "0500000US13077",
                 "GEOID": "13077",
                 "NAME": "Coweta",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1141971255,
                 "AWATER": 12730357
@@ -1022,6 +1046,8 @@ var data = {
                 "AFFGEOID": "0500000US13113",
                 "GEOID": "13113",
                 "NAME": "Fayette",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 503398796,
                 "AWATER": 12846500
@@ -1087,6 +1113,8 @@ var data = {
                 "AFFGEOID": "0500000US13255",
                 "GEOID": "13255",
                 "NAME": "Spalding",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 507333988,
                 "AWATER": 9602978
@@ -1164,6 +1192,8 @@ var data = {
                 "AFFGEOID": "0500000US13063",
                 "GEOID": "13063",
                 "NAME": "Clayton",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 366862138,
                 "AWATER": 7057627
@@ -1253,6 +1283,8 @@ var data = {
                 "AFFGEOID": "0500000US13151",
                 "GEOID": "13151",
                 "NAME": "Henry",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 825200366,
                 "AWATER": 20443876
@@ -1366,6 +1398,8 @@ var data = {
                 "AFFGEOID": "0500000US13089",
                 "GEOID": "13089",
                 "NAME": "DeKalb",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 693055897,
                 "AWATER": 9198256
@@ -1451,6 +1485,8 @@ var data = {
                 "AFFGEOID": "0500000US13217",
                 "GEOID": "13217",
                 "NAME": "Newton",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 704988503,
                 "AWATER": 18130753
@@ -1540,6 +1576,8 @@ var data = {
                 "AFFGEOID": "0500000US13135",
                 "GEOID": "13135",
                 "NAME": "Gwinnett",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 1114908667,
                 "AWATER": 16358522
@@ -1633,6 +1671,8 @@ var data = {
                 "AFFGEOID": "0500000US13013",
                 "GEOID": "13013",
                 "NAME": "Barrow",
+                "TapWater": "10",
+                "Contaminants": "13",
                 "LSAD": "06",
                 "ALAND": 415349721,
                 "AWATER": 6642220
