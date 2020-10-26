@@ -73,12 +73,46 @@ $(document).ready(function () {
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
-            '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> '  + props.Contaminants
-            : 'Hover over a state');
+            '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' 
+            + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> '  + props.Contaminants 
+            + '<br /><b style="color:#3182bd">Air Quality Index:</b><b> ' + props.AirQuality 
+            : 'Hover over a county');
     };
 
     info.addTo(map);
 
-    L.marker([33.742612777346885, -84.38873291015625]).addTo(map);
+
+    
+    // Added Cloud Markers to mark locations of Air Quality Testing Locations
+    var AirQualityIcon = L.icon({
+        iconUrl : "../static/img/air_cloud.png",
+        iconSize: [32,32]
+    }); 
+
+    var m_gainseville = L.marker([34.2979, -83.8241], {icon: AirQualityIcon}).bindPopup("Gainesville"),
+        m_gwinnetttech = L.marker([33.9628, -84.0676], {icon: AirQualityIcon}).bindPopup("Gwinnett Tech"),
+        m_georgiatech = L.marker([33.7756, -84.3963], {icon: AirQualityIcon}).bindPopup("Georgia Tech"),
+        m_nationalguard = L.marker([33.7260405,-84.3602911], {icon: AirQualityIcon}).bindPopup("Atlanta National Guard Station"),
+        m_georgiaperim = L.marker([33.6892844,-84.2774477], {icon: AirQualityIcon}).bindPopup("Georgia Perimeter College"),
+        m_mcdonough = L.marker([33.4473, -84.1469], {icon: AirQualityIcon}).bindPopup("McDonough"),
+        m_epaoffice = L.marker([33.1740036,-84.4425146], {icon: AirQualityIcon}).bindPopup("EPA Office"),
+        m_douglasville = L.marker([33.7515, -84.7477], {icon: AirQualityIcon}).bindPopup("Douglasville"),
+        m_kennesaw = L.marker([34.0234, -84.6155], {icon: AirQualityIcon}).bindPopup("Kennesaw"),
+        m_athens = L.marker([33.9285546,-83.3643441], {icon: AirQualityIcon}).bindPopup("Athens Poultry Research Lab"),
+        m_foodcenter = L.marker([33.583955,-84.068942], {icon: AirQualityIcon}).bindPopup("Food Center"),
+        m_forestry = L.marker([34.3777014,-84.0579227], {icon: AirQualityIcon}).bindPopup("Georgia Forestry Commision");
+
+    var airquality_markers = L.layerGroup([m_gainseville, m_gwinnetttech, m_georgiatech, m_georgiaperim,
+                       m_nationalguard, m_mcdonough, m_epaoffice, m_douglasville,
+                       m_kennesaw, m_athens, m_foodcenter, m_forestry]);
+
+    var overlayMaps = {
+        "Air Quality": airquality_markers
+    };
+
+    L.control.layers(null, overlayMaps).addTo(map);
+
+    
+    
 
 });

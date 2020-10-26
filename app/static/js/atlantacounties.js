@@ -12,6 +12,7 @@ var data = {
                 "NAME": "Rockdale",
                 "TapWater": "10",
                 "Contaminants" : "13",
+                "AirQuality" : "19",
                 "LSAD": "06",
                 "ALAND": 336205278,
                 "AWATER": 5926396
@@ -83,6 +84,7 @@ var data = {
                 "NAME": "Walton",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "16",
                 "LSAD": "06",
                 "ALAND": 843525615,
                 "AWATER": 11170130
@@ -160,8 +162,9 @@ var data = {
                 "AFFGEOID": "0500000US13015",
                 "GEOID": "13015",
                 "NAME": "Bartow",
-                "TapWater": "10",
+                "TapWater": "3",
                 "Contaminants": "13",
+                "AirQuality" : "20",
                 "LSAD": "06",
                 "ALAND": 1190219024,
                 "AWATER": 27368325
@@ -233,6 +236,7 @@ var data = {
                 "NAME": "Cherokee",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "20",
                 "LSAD": "06",
                 "ALAND": 1092190453,
                 "AWATER": 32938535
@@ -323,7 +327,8 @@ var data = {
                 "GEOID": "13117",
                 "NAME": "Forsyth",
                 "TapWater": "10",
-                "Contaminants": "13",
+                "Contaminants": "19",
+                "AirQuality" : "19",
                 "LSAD": "06",
                 "ALAND": 580297280,
                 "AWATER": 59743068
@@ -395,6 +400,7 @@ var data = {
                 "NAME": "Hall",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "17",
                 "LSAD": "06",
                 "ALAND": 1017306098,
                 "AWATER": 94561948
@@ -485,7 +491,8 @@ var data = {
                 "GEOID": "13223",
                 "NAME": "Paulding",
                 "TapWater": "10",
-                "Contaminants": "13",
+                "Contaminants": "21",
+                "AirQuality" : "21",
                 "LSAD": "06",
                 "ALAND": 808832044,
                 "AWATER": 5309331
@@ -569,6 +576,7 @@ var data = {
                 "NAME": "Cobb",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "20",
                 "LSAD": "06",
                 "ALAND": 879701643,
                 "AWATER": 12597293
@@ -660,6 +668,7 @@ var data = {
                 "NAME": "Atlanta-Fulton",
                 "TapWater": "8",
                 "Contaminants": "10", 
+                "AirQuality" : "21",
                 "LSAD": "06",
                 "ALAND": 1364178479,
                 "AWATER": 19792701
@@ -815,6 +824,7 @@ var data = {
                 "NAME": "Carroll",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "21",
                 "LSAD": "06",
                 "ALAND": 1292492346,
                 "AWATER": 12284897
@@ -902,6 +912,7 @@ var data = {
                 "NAME": "Douglas",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "21",
                 "LSAD": "06",
                 "ALAND": 518293193,
                 "AWATER": 2485429
@@ -965,6 +976,7 @@ var data = {
                 "NAME": "Coweta",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "21",
                 "LSAD": "06",
                 "ALAND": 1141971255,
                 "AWATER": 12730357
@@ -1048,6 +1060,7 @@ var data = {
                 "NAME": "Fayette",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "27",
                 "LSAD": "06",
                 "ALAND": 503398796,
                 "AWATER": 12846500
@@ -1115,6 +1128,7 @@ var data = {
                 "NAME": "Spalding",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "27",
                 "LSAD": "06",
                 "ALAND": 507333988,
                 "AWATER": 9602978
@@ -1194,6 +1208,7 @@ var data = {
                 "NAME": "Clayton",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "22",
                 "LSAD": "06",
                 "ALAND": 366862138,
                 "AWATER": 7057627
@@ -1285,6 +1300,7 @@ var data = {
                 "NAME": "Henry",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "22",
                 "LSAD": "06",
                 "ALAND": 825200366,
                 "AWATER": 20443876
@@ -1400,6 +1416,7 @@ var data = {
                 "NAME": "DeKalb",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "18",
                 "LSAD": "06",
                 "ALAND": 693055897,
                 "AWATER": 9198256
@@ -1485,8 +1502,9 @@ var data = {
                 "AFFGEOID": "0500000US13217",
                 "GEOID": "13217",
                 "NAME": "Newton",
-                "TapWater": "10",
+                "TapWater": "19",
                 "Contaminants": "13",
+                "AirQuality" : "19",
                 "LSAD": "06",
                 "ALAND": 704988503,
                 "AWATER": 18130753
@@ -1577,7 +1595,8 @@ var data = {
                 "GEOID": "13135",
                 "NAME": "Gwinnett",
                 "TapWater": "10",
-                "Contaminants": "13",
+                "Contaminants": "16",
+                "AirQuality" : "16",
                 "LSAD": "06",
                 "ALAND": 1114908667,
                 "AWATER": 16358522
@@ -1673,6 +1692,7 @@ var data = {
                 "NAME": "Barrow",
                 "TapWater": "10",
                 "Contaminants": "13",
+                "AirQuality" : "19",
                 "LSAD": "06",
                 "ALAND": 415349721,
                 "AWATER": 6642220
@@ -1723,3 +1743,10 @@ var data = {
         }
     ]
 }
+/*
+ air quality data pulled from 
+ https://gispub.epa.gov/airnow/?xmin=-10075011.824212514&ymin=3595597.8105346905&xmax=-8587853.001896124&ymax=4537301.999008063&clayer=none&mlayer=ozonepm
+ on 10/25/2020 at 4:00pm
+ air quality for county is based on proximity of air quality check locations to 
+ the counties county seat
+ */
