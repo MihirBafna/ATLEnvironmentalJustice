@@ -11,27 +11,48 @@ $(document).ready(function () {
     }).addTo(map);
 
     var geojson;
+    var mode = "water";
+
+    function getColor(d) {
+        if (mode == "water") {
+            return d > 19 ? '#084594' :
+                d > 16 ? '#2171b5' :
+                    d > 13 ? '#4292c6' :
+                        d > 11 ? '#6baed6' :
+                            '#9ecae1';
+        }
+    }
 
     function style(feature) {
-        return {
-            // fillColor: getColor(feature.properties.density),
-            weight: 2,
-            opacity: 1,
-            color: '#3182bd',
-            fillOpacity: 0.3
-        };
+        if (mode == "water") {
+            return {
+                fillColor: getColor(feature.properties.Contaminants, mode),
+                weight: 2,
+                opacity: 1,
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        } else {
+            return {
+                fillColor: "#3182bd",
+                weight: 2,
+                opacity: 1,
+                color: '#3182bd',
+                fillOpacity: 0.3
+            };
+        }
     }
 
     function highlightFeature(e) {
         var layer = e.target;
-
         layer.setStyle({
+            fillColor: "#FFF",
             weight: 5,
-            color: '#3182bd',
+            color: '#FFF',
             dashArray: '',
             fillOpacity: 0.8
         });
-
         info.update(layer.feature.properties);
 
 
@@ -72,9 +93,14 @@ $(document).ready(function () {
 
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-        this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
-            '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> '  + props.Contaminants
-            : 'Hover over a state');
+        if (mode == "water") {
+            this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
+                '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> ' + props.Contaminants
+                : 'Hover over a state');
+        } else {
+            this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
+        }
+
     };
 
     info.addTo(map);
