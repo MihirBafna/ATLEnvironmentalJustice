@@ -96,7 +96,7 @@ $(document).ready(function () {
         if (mode == "water") {
             this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
                 '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> ' + props.Contaminants
-                : 'Hover over a state');
+                : 'Hover over a county');
         } else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
         }
@@ -109,19 +109,21 @@ $(document).ready(function () {
     var legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function (map) {
+        if (mode=="water"){
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [10, 11, 13, 16, 18, 20],
+                labels = [];
 
-        var div = L.DomUtil.create('div', 'info legend'),
-            grades = [10, 11, 13, 16, 18, 20],
-            labels = [];
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
 
-        // loop through our density intervals and generate a label with a colored square for each interval
-        for (var i = 0; i < grades.length; i++) {
-            div.innerHTML +=
-                '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            return div;
         }
 
-        return div;
     };
 
     legend.addTo(map);

@@ -1,3 +1,10 @@
+/*
+ air quality data pulled from
+ https://gispub.epa.gov/airnow/?xmin=-10075011.824212514&ymin=3595597.8105346905&xmax=-8587853.001896124&ymax=4537301.999008063&clayer=none&mlayer=ozonepm
+ on 10/25/2020 at 4:00pm
+ air quality for county is based on proximity of air quality check locations to
+ the counties county seat
+ */
 var data = {
     "type": "FeatureCollection",
     "features": [
@@ -1736,10 +1743,4 @@ var data = {
         }
     ]
 }
-/*
- air quality data pulled from 
- https://gispub.epa.gov/airnow/?xmin=-10075011.824212514&ymin=3595597.8105346905&xmax=-8587853.001896124&ymax=4537301.999008063&clayer=none&mlayer=ozonepm
- on 10/25/2020 at 4:00pm
- air quality for county is based on proximity of air quality check locations to 
- the counties county seat
- */
+
