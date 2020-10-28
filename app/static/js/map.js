@@ -1,5 +1,8 @@
 $(document).ready(function () {
     $('body').fadeIn(1000);
+    var geojson;
+    $(".legend").css({ 'border': '#3182bd solid 5px' })
+
     var map = L.map('mapid', { minZoom: 8, zoomControl: false, attributionControl: false }).setView([33.742612777346885, -84.38873291015625], 9); //georgia:32.709/-83.156 // Atlanta :-84.38873291015625,/ 33.742612777346885
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -9,9 +12,28 @@ $(document).ready(function () {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoibWloaXJiYWZuYSIsImEiOiJja2dsbGJkOW8wMng0MnJueXRnbGJ2YzZiIn0.Dv_yc4MNQCvKKt_ZEZ8aSw'
     }).addTo(map);
+    initialize();
 
-    var geojson;
-    var mode = "water";
+
+    function initialize() {
+        if (mode == "water") {
+            $(".info").css({ 'border': '#3182bd solid 5px' })
+            $(".legend").css({ 'border': '#3182bd solid 5px' })
+            $("#radio2").prop("checked", true);
+        } else if (mode == "air") {
+            $(".info").css({ 'border': '#df65b0 solid 5px' })
+            $(".legend").css({ 'border': '#df65b0 solid 5px' })
+            $("#radio3").prop("checked", true);
+        } else if (mode == "wealth") {
+            $("#radio4").prop("checked", true);
+        } else if (mode == "race") {
+            $("#radio5").prop("checked", true);
+        }else {
+            $(".info").css({ 'border': '#3182bd solid 5px' })
+            $(".legend").css({ 'border': '#3182bd solid 5px' })
+            $("#radio1").prop("checked", true);
+        }
+    }
 
     function getColor(d) {
         if (mode == "water") {
@@ -20,13 +42,28 @@ $(document).ready(function () {
                     d > 13 ? '#4292c6' :
                         d > 11 ? '#6baed6' :
                             '#9ecae1';
+        } else if (mode == "air") {
+            return d > 24 ? '#91003f' :
+                d > 21 ? '#ce1256' :
+                    d > 20 ? '#e7298a' :
+                        d > 17 ? '#df65b0' :
+                            '#c994c7';
         }
     }
 
     function style(feature) {
         if (mode == "water") {
             return {
-                fillColor: getColor(feature.properties.Contaminants, mode),
+                fillColor: getColor(feature.properties.Contaminants),
+                weight: 2,
+                opacity: 1,
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        } else if (mode == "air") {
+            return {
+                fillColor: getColor(feature.properties.AirQuality),
                 weight: 2,
                 opacity: 1,
                 color: '#FFF',
@@ -88,6 +125,7 @@ $(document).ready(function () {
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
+        initialize();
         return this._div;
     };
 
@@ -96,11 +134,14 @@ $(document).ready(function () {
         if (mode == "water") {
             this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
                 '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> ' + props.Contaminants
-                : 'Hover over a county');
-        } else {
+                : '<b style="color:#3182bd"> Hover over a county </b>');
+        } else if (mode == "air") {
+            this._div.innerHTML = '<h4 style="font: 16px">Air Quality</h4>' + (props ?
+                '<b style="color:#df65b0">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#df65b0">Air Quality Index:</b><b> ' + props.AirQuality : '<b style="color:#df65b0"> Hover over a county </b>');
+        }
+        else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
         }
-// <b style="color:#3182bd">Air Quality Index:</b><b> ' + props.AirQuality +'</b>': 'Hover over a county'
     };
 
     info.addTo(map);
@@ -109,22 +150,35 @@ $(document).ready(function () {
     var legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function (map) {
-        if (mode=="water"){
-            var div = L.DomUtil.create('div', 'info legend'),
-                grades = [10, 11, 13, 16, 18, 20],
+        this._div = L.DomUtil.create('div', 'legend'),
+        this.update();
+        initialize();
+        return this._div;
+    };
+
+    legend.update = function () {
+        if (mode == "water") {
+            var grades = [10, 11, 13, 16, 18, 20],
                 labels = [];
 
             // loop through our density intervals and generate a label with a colored square for each interval
             for (var i = 0; i < grades.length; i++) {
-                div.innerHTML +=
+                this._div.innerHTML +=
                     '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
             }
+        } else if (mode == "air") {
+            var grades = [16, 17, 20, 21, 24],
+                labels = [];
 
-            return div;
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                this._div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
         }
-
-    };
+    }
 
     legend.addTo(map);
 
