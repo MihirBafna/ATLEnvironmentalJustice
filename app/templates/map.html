@@ -36,20 +36,54 @@
             </div>
         </header>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-9">
-            <h3 style="font-weight: 100;">Interactive Map:</h3>
-            <hr style="height: 0px; width: 20%;"></hr>
-            <div style="height: 80%; margin-top: 5px; margin-left: 2%; margin-right: 2%;">
+            <h3 style="font-weight: 100; margin-top: 0;">Interactive Map:</h3>
+            <hr style="height: 0px; width: 20%; margin-top: 0;"></hr>
+            <div style="height: 80%; margin-top: 5px; margin-left: 1%; margin-right: 1%;">
                 <div id="mapid"></div>
+                <div id="toggleSelector"></div>
             </div>
         </div>
         <div class="col-3" id="toggle">
-            <h3 style="font-weight: 100; ">County Information</h3>
-            <hr style="height: 0px; width: 20%;"/>
-            <div id="panel">
-
-            </div>
+                <h3 style="font-weight: 100; text-align: center; margin-top: 0;">County Information</h3>
+                <hr style="height: 0px; width: 80%; margin-top: 0;" />
+                <div id="panel" style="height: 55%;">
+                </div>
+                <h4 style="font-weight: 100; margin-top: 1%;">Modes:</h4>
+                <hr style="height: 0px; width: 40%; margin-top: 0px;" />
+                <div id="panel2" style="height: 25%; align-items: center; padding: 2%; text-align: left;">
+                    <div class="form-check">
+                        <input onclick= "location.href = '/map/default'" class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Default
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input onclick= "location.href = '/map/water'" class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Water Quality
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input onclick= "location.href = '/map/air'" class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="option3">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Air Quality
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input onclick= "location.href = '/map/wealth'" class="form-check-input" type="radio" name="exampleRadios" id="radio4" value="option4">
+                        <label class="form-check-label" for="exampleRadios4">
+                            Wealth
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input onclick= "location.href = '/map/race'" class="form-check-input" type="radio" name="exampleRadios" id="radio5" value="option5">
+                        <label class="form-check-label" for="exampleRadios5">
+                            Race/Ethnicity
+                        </label>
+                    </div>
+                </div>
         </div>
     </div>
     <footer class="footer mastfoot mt-auto">
@@ -59,6 +93,9 @@
         </div>
     </footer>
 </div>
+<script>
+    var mode = "{{mode}}";
+</script>
 <script src="../static/js/atlantacounties.js"></script>
 <script src="../static/js/map.js"></script>
 {% endblock %}
