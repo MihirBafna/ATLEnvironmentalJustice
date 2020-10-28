@@ -16,3 +16,7 @@ def info():
 @app.route('/solutions')
 def solutions():
     return render_template('solutions.html')
+
+@app.route('/references')
+def references():
+    return render_template('references.html')

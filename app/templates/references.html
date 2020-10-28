@@ -3,20 +3,36 @@
 {% block head %}
 
 <link rel="stylesheet" href="../static/css/index.css">
-<!-- <style>
+<style>
+    p.title {
+        font: 12px "Times New Roman";
+    }
+    p.citation {
+        font: 12px "Times New Roman";
+        text-align: left;
+        padding-left: 36px;
+        text-indent: -36px;
+    }
     body {
-
+        background-color: #323639;
+        /*
         background-image: url("../static/img/AtlantaBackground.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-attachment: fixed;*/
     }
-</style> -->
+
+    div.test {
+        overflow: scroll;
+    }
+    
+</style> 
 
 {% endblock %}
 
 {% block body %}
+
 <div class="background">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
@@ -26,13 +42,25 @@
                     <a class="nav-link" href="/">Home</a>
                     <a class="nav-link" href="/map">Map</a>
                     <a class="nav-link" href="/info">Info</a>
-                    <a class="nav-link active" href="/solutions">What To Do?</a>
-                    <a class="nav-link" href="/references">References</a>
+                    <a class="nav-link" href="/solutions">What To Do?</a>
+                    <a class="nav-link active" href="/references">References</a>
                 </nav>
             </div>
         </header>
-        <div class="container" style="border: white 1px solid; height: 80%; margin-top: 5%; margin-bottom: 5%;">
+        <div class="container" style="border: #323639 0px solid; height: 80%; margin-top: 5%; margin-bottom: 5%;">
+            
+            <!-- Please get this "test" class to work. Why it no scroll? :( -->
+            <div class="test">
+                <p class ="title">Works Cited</p>
 
+                <!-- Read File to place Resource Data-->
+                <div id="file-script">
+                    <script src="../static/js/references.js"></script>
+                    <script>parse_references("../static/txt/references.txt");</script>
+                </div>
+            </div>
+            
+            
         </div>
     </div>
 
