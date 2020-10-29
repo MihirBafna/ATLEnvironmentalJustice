@@ -25,8 +25,12 @@ $(document).ready(function () {
             $(".legend").css({ 'border': '#df65b0 solid 5px' })
             $("#radio3").prop("checked", true);
         } else if (mode == "wealth") {
+            $(".info").css({ 'border': '#2ca25f solid 5px' })
+            $(".legend").css({ 'border': '#2ca25fsolid 5px' })
             $("#radio4").prop("checked", true);
         } else if (mode == "race") {
+            $(".info").css({ 'border': '#3182bd solid 5px' })
+            $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio5").prop("checked", true);
         }else {
             $(".info").css({ 'border': '#3182bd solid 5px' })
@@ -48,6 +52,12 @@ $(document).ready(function () {
                     d > 20 ? '#e7298a' :
                         d > 17 ? '#df65b0' :
                             '#c994c7';
+        } else if (mode == "wealth") {
+            return d > 33 ? '#238b45' :
+                d > 29 ? '#41ae76' :
+                    d > 24 ? '#66c2a4' :
+                        d > 21 ? '#99d8c9' :
+                            '#ccece6';
         }
     }
 
@@ -70,7 +80,16 @@ $(document).ready(function () {
                 dashArray: '3',
                 fillOpacity: 0.7
             };
-        } else {
+        } else if (mode == "wealth") {
+            return {
+                fillColor: getColor(feature.properties.IncomePerCapita.substring(1,3)),
+                weight: 2,
+                opacity: 1,
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }else {
             return {
                 fillColor: "#3182bd",
                 weight: 2,
@@ -138,6 +157,9 @@ $(document).ready(function () {
         } else if (mode == "air") {
             this._div.innerHTML = '<h4 style="font: 16px">Air Quality</h4>' + (props ?
                 '<b style="color:#df65b0">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#df65b0">Air Quality Index:</b><b> ' + props.AirQuality : '<b style="color:#df65b0"> Hover over a county </b>');
+        } else if (mode == "wealth") {
+            this._div.innerHTML = '<h4 style="font: 16px">Wealth</h4>' + (props ?
+                '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover over a county </b>');
         }
         else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
@@ -176,6 +198,16 @@ $(document).ready(function () {
                 this._div.innerHTML +=
                     '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            }
+        } else if (mode == "wealth") {
+            var grades = ["$18,000", "$22,000", "$25,000", "$30,000", "$35,000"],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                this._div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i].substring(1,3)) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
             }
         }
     }

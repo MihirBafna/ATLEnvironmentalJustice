@@ -40,6 +40,7 @@
     text-align: left;
     line-height: 18px;
     color: #FFF;
+    display: inline-block;
 }
 .legend i {
     width: 18px;
