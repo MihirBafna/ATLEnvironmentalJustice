@@ -14,6 +14,25 @@ $(document).ready(function () {
     }).addTo(map);
     initialize();
 
+    function contentToHtml2(text) {
+        return text
+        .split('\n\n')
+        .map(paragraph => `<p class="county-info">${paragraph}</p>`)
+        .join('')
+    }
+
+    function setCountyInfo(county) {
+        fileName = "../static/txt/counties/" + county.toLowerCase() + ".txt";
+        
+        fetch(fileName)
+            .then(response => response.text())
+            .then(data => {
+                console.log(fileName);
+                document.getElementById("county-script").innerHTML=contentToHtml2(data);
+        });
+
+    }
+
 
     function initialize() {
         if (mode == "water") {
@@ -101,6 +120,7 @@ $(document).ready(function () {
     }
 
     function highlightFeature(e) {
+
         var layer = e.target;
         layer.setStyle({
             fillColor: "#FFF",
@@ -110,6 +130,8 @@ $(document).ready(function () {
             fillOpacity: 0.8
         });
         info.update(layer.feature.properties);
+
+        setCountyInfo(layer.feature.properties.NAME);
 
 
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
