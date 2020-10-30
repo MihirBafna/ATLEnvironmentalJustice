@@ -3,16 +3,30 @@
 {% block head %}
 
 <link rel="stylesheet" href="../static/css/index.css">
-<!-- <style>
+< <style>
     body {
-
-        background-image: url("../static/img/AtlantaBackground.jpg");
+        /*background-image: url("../static/img/AtlantaBackground.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-attachment: fixed; */
+
+        background-color: #323639;
+        overflow: scroll
+        
     }
-</style> -->
+    h1.title {
+        font: 40px "Times New Roman";
+        font-weight: bold;
+    }
+
+    p.info-page {
+        font: 16px "Times New Roman";
+        text-align: left;
+        text-indent: 35px;
+    }
+
+</style> >
 
 {% endblock %}
 
@@ -31,11 +45,25 @@
                 </nav>
             </div>
         </header>
-        <div class="container" style="border: white 1px solid; height: 80%; margin-top: 5%; margin-bottom: 5%;">
+    
 
-        </div>
+        <p></p>
+        <p></p>
+        <h1 class ="title">Background Information</h1>
+        
+        <div class="container" style="border: #323639 0px solid; height: 80%; margin-top: 5%; margin-bottom: 10%;">
+
+            <!-- Read File to place Resource Data-->
+            <div id="file-script">
+                <script src="../static/js/info.js"></script>
+                <script>parse_references("../static/txt/info.txt");</script>
+            </div>
+            <br>
+            <br>
+
+        </div>    
+    
     </div>
-
     <footer class="footer mastfoot mt-auto">
         <div class=" inner">
             <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a
