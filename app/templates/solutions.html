@@ -3,16 +3,44 @@
 {% block head %}
 
 <link rel="stylesheet" href="../static/css/index.css">
-<!-- <style>
+<style>
     body {
-
+        /*
         background-image: url("../static/img/AtlantaBackground.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        */
+
+        background-color: #323639;
+        overflow: scroll;
     }
-</style> -->
+
+    p.solutions-page {
+        font: 16px "Times New Roman";
+        text-align: left;
+        text-indent: 35px;
+    }
+
+    h1.title {
+        font: 40px "Times New Roman";
+        font-weight: bold;
+    }
+
+    h1.subtitle {
+        font: 20px "Times New Roman";
+        font-weight: bold;
+        text-align: left;
+    }
+
+    a.envlink {
+        font: 16px "Times New Roman";
+        text-align: left;
+        display: block;
+    }
+
+</style> 
 
 {% endblock %}
 
@@ -31,9 +59,30 @@
                 </nav>
             </div>
         </header>
-        <div class="container" style="border: white 1px solid; height: 80%; margin-top: 5%; margin-bottom: 5%;">
+        <br>
+        <br>
 
-        </div>
+        <h1 class ="title">What can be done?</h1>
+
+        <div class="container" style="border: #323639 0px solid; height: 80%; margin-top: 5%; margin-bottom: 10%;">
+
+            <!-- Read File to place Resource Data-->
+            <div id="file-script">
+                <script src="../static/js/solutions.js"></script>
+                <script>parse_references("../static/txt/solutions.txt");</script>
+            </div>
+            <div >
+                <a class="envlink" href="https://greenlaw.org/">Green Law</a>
+                <a class="envlink" href="https://www.weact.org/">We Act</a>
+                <a class="envlink" href="https://www.thedreamcorps.org/our-programs/green-for-all/">Dream Corps</a>
+                <a class="envlink" href="https://www.naacp.org/environmental-climate-justice-about/">NAACP</a>
+                <a class="envlink" href="https://earthjustice.org/welcome?utm_expid=.LmV7TQLVRmagEU8zM2NAGw.1&utm_referrer=">Earth Justice</a>
+            </div>
+            
+            <br>
+            <br>
+
+        </div>  
     </div>
 
     <footer class="footer mastfoot mt-auto">
