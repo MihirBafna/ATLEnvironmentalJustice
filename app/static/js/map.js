@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('body').fadeIn(1000);
     var geojson;
     $(".legend").css({ 'border': '#3182bd solid 5px' })
 
@@ -28,7 +27,7 @@ $(document).ready(function () {
             .then(response => response.text())
             .then(data => {
                 console.log(fileName);
-                document.getElementById("county-script").innerHTML=contentToHtml2(data);
+                document.getElementById("county-script").innerHTML = '<p style="font-family: Helvetica Neue; padding:2%; text-align: left;"'+contentToHtml2(data)+'</p>';
         });
 
     }

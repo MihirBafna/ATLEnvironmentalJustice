@@ -11,6 +11,6 @@ function parse_references(file) {
     fetch(file)
         .then(response => response.text())
         .then(data => {
-            document.getElementById("file-script").innerHTML=contentToHtml(data);
+            document.getElementById("file-script").innerHTML = '<p "style="font-family: Helvetica Neue; padding:2%; text-align: left;"' +contentToHtml(data) +'</p>';
     });
 }
