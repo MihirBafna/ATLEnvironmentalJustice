@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     function setCountyInfo(county) {
         fileName = "../static/txt/counties/" + county.toLowerCase() + ".txt";
-        
+        $("#modal-name").text(county);
         fetch(fileName)
             .then(response => response.text())
             .then(data => {
@@ -145,6 +145,7 @@ $(document).ready(function () {
 
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
+        $('#modal').modal('show');
     }
 
     function onEachFeature(feature, layer) {
@@ -174,13 +175,13 @@ $(document).ready(function () {
         if (mode == "water") {
             this._div.innerHTML = '<h4 style="font: 16px">Tap Water Quality</h4>' + (props ?
                 '<b style="color:#3182bd">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#3182bd">EWG Water Rating:</b><b> ' + props.TapWater + '<br /><b style="color:#3182bd">Contaminants Detected:</b><b> ' + props.Contaminants
-                : '<b style="color:#3182bd"> Hover over a county </b>');
+                : '<b style="color:#3182bd"> Hover/Click on a county </b>');
         } else if (mode == "air") {
             this._div.innerHTML = '<h4 style="font: 16px">Air Quality</h4>' + (props ?
-                '<b style="color:#df65b0">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#df65b0">Air Quality Index:</b><b> ' + props.AirQuality : '<b style="color:#df65b0"> Hover over a county </b>');
+                '<b style="color:#df65b0">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#df65b0">Air Quality Index:</b><b> ' + props.AirQuality : '<b style="color:#df65b0"> Hover/Click on a county </b>');
         } else if (mode == "wealth") {
             this._div.innerHTML = '<h4 style="font: 16px">Wealth</h4>' + (props ?
-                '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover over a county </b>');
+                '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover/Click on a county </b>');
         }
         else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';

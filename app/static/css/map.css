@@ -4,6 +4,20 @@
     border-radius: 10px;
 }
 
+.modal-content {
+    background-color: rgba(52, 51, 50, 1);
+}
+#closebtn {
+    color: white;
+    border-color: white;
+    box-shadow: none;
+}
+#closebtn:hover {
+    color: rgb(24, 190, 255);
+    border-color: rgb(24, 190, 255);
+    box-shadow: none;
+}
+
 .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -25,10 +39,10 @@
     border-radius: 10px;
 }
 
-#panel2{
+.panel2{
     background-color: rgba(52, 51, 50, 1);
-    height: 9%;
-    margin-right: 5%;
+    margin: auto;
+    display: block;
     border-radius: 10px;
 }
 .legend {
