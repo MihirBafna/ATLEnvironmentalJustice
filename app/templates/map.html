@@ -29,15 +29,16 @@
 {% block body %}
 <div class="background">
     <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
-        <header class="masthead">
+        <header class="masthead mb-auto" style="z-index: 1;">
             <div class="inner">
-                <h2 class="masthead-brand">ATLEnvJustice</h2>
+                <h2 class="masthead-brand" style="font-size:3vh">ATLEnvJustice</h2>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link active" href="/map">Map</a>
-                    <a class="nav-link" href="/info">Info</a>
-                    <a class="nav-link" href="/solutions">What To Do?</a>
-                    <a class="nav-link" href="/references">References</a>
+                    <a class="nav-link" href="/" id="homeicon"><i class='fas' style="font-size:2.5vh">&#xf015;</i></a>
+                    <a class="nav-link" href="/info" id="infoicon"><i class='fas' style="font-size:2.5vh">&#xf46c;</i></a>
+                    <a class="nav-link active" href="/map" id="mapicon"><i class='fas fa-globe-americas'
+                            style="font-size:2.5vh"></i></a>
+                    <a class="nav-link" href="/solutions" id="solicon"><i class='fas' style="font-size:2.5vh">&#xf24e;</i></a>
+                    <a class="nav-link" href="/references" id="reficon"><i class='fas' style="font-size:2.5vh">&#xf022;</i></a>
                 </nav>
             </div>
         </header>
@@ -75,7 +76,7 @@
 
                 <h4 style="font-weight: 100; margin-top: 1%;">Modes:</h4>
                 <hr style="height: 0px; width: 40%; margin-top: 0px;" />
-                <div id="panel2 justify-content-center" style="height: auto;padding: 2%; align-items: center;text-align: left; ">
+                <div id="panel2 justify-content-center" style="height: auto;padding: 2%; align-items: center;text-align: left; margin-left: 30%; ">
                     <div class="form-check">
                         <input onclick="location.href = '/map/default'" class="form-check-input" type="radio" name="exampleRadios"
                             id="radio1" value="option1" checked>

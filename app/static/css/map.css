@@ -3,7 +3,16 @@
     width: 100%;
     border-radius: 10px;
 }
-
+.modal-dialog {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
 .modal-content {
     background-color: rgba(52, 51, 50, 1);
 }

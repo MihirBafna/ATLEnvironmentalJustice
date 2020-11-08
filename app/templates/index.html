@@ -5,13 +5,12 @@
 <link rel="stylesheet" href="../static/css/index.css">
 <style>
     body {
-        display: none;
         background-image: url("../static/img/AtlantaBackground.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-
+        overflow-y: hidden;
     }
 </style>
 
@@ -19,41 +18,161 @@
 
 {% block body %}
 <div class="background">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
+    <div class="cover-container d-flex w-100 h-5 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto" style="z-index: 1;">
             <div class="inner">
-                <h2 class="masthead-brand">ATLEnvJustice</h2>
+                <h2 class="masthead-brand" style="font-size:3vh">ATLEnvJustice</h2>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="/">Home</a>
-                    <a class="nav-link" href="/map">Map</a>
-                    <a class="nav-link" href="/info">Info</a>
-                    <a class="nav-link" href="/solutions">What To Do?</a>
-                    <a class="nav-link" href="/references">References</a>
+                    <a class="nav-link active" href="/" id="homeicon"><i class='fas' style="font-size:2.5vh">&#xf015;</i></a>
+                    <a class="nav-link" href="/info" id="infoicon"><i class='fas' style="font-size:2.5vh">&#xf46c;</i></a>
+                    <a class="nav-link" href="/map" id="mapicon"><i class='fas fa-globe-americas' style="font-size:2.5vh"></i></a>
+                    <a class="nav-link" href="/solutions" id="solicon"><i class='fas' style="font-size:2.5vh">&#xf24e;</i></a>
+                    <a class="nav-link" href="/references" id="reficon"><i class='fas' style="font-size:2.5vh">&#xf022;</i></a>
                 </nav>
             </div>
         </header>
-        <div class="container" style="height: 80%; margin-bottom: 5%; margin-top: 5%;">
-                <div class="mainmodal">
-                    <hr style="background-color: rgba(38, 47, 56, 0.3);">
-                    <h1 class="cover-heading">Atlanta Environmental Justice</h1>
-                    <!-- <hr class="line"> -->
-                    <p class="lead" style="padding-left: 2%; padding-right: 2%;">Atlanta is home to more than a half million people; all
-                        of different racial and socioeconomic backgrounds. It seems
-                        logical that everyone would have the same quality of water,
-                        air, and life. Unfortunately, this is not the case.</p>
-                    <p class="lead">
-                        <a id="start" href="/map" class="btn btn-lg btn-secondary">Learn More</a>
-                    </p>
+    </div>
+    <div id="fullPage">
+        <div class="section s1">
+            <div class="container-fluid" style="height: 80%; padding-top: 0;">
+            <div class="row h-100">
+                <div class="col-5" style="text-align: left; padding-left: 2%;">
                 </div>
+                <div class="col-2">
+
+                </div>
+                <div class="col-5" style="padding-left: 0; padding-right: 10%; text-align: right;">
+                    <div class=" mainmodal ">
+                        <h1 class="cover-heading" style="font-size: 7vh;" ><b>ATLEnvJustice</b></h1>
+                        <hr style="background-color: rgba(38, 47, 56, 0);">
+                        <p class="lead" style="font-size: 2vh;"> Atlanta is home to more than a half million
+                        people; all
+                        of different racial and socioeconomic backgrounds. It should seem logical
+                        that everyone would share the same quality of water,
+                        air, and life. Unfortunately, this is not the case. Join us in exploring the environmental injustice that plagues the greater Atlanta area.</p>
+                        <div class="mastfoot inner" style="text-align: right; font-size: 1.75vh;">
+                            <i>Created by <a class="mastfoot" href="https://github.com/MihirBafna">Mihir Bafna</a> | <a
+                                    class="mastfoot" href="https://github.com/brettpietruszka">Brett Pietruszka</a> </i>
+                        </div>
+                        <hr style="background-color: rgba(38, 47, 56, 0);">
+                        <p class="lead">
+                            <a id="start" class="btn btn-lg btn-secondary" style="font-size: 1.75vh;">Get Started</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- <footer class="footer mastfoot mt-auto">
+
+            </footer> -->
         </div>
+        <div class="section s3">
+            <div class="container-fluid" style="height: 80%; margin-bottom: 5%; margin-top: 5%">
+                <div class="row h-100" id="scrolldown">
+                    <div class="col-5" style="text-align:left; padding-left:12%; padding-top: 5%;">
+                        <h1 style="font-size: 9vh; color: rgb(24, 190, 255);white-space: nowrap;"><b>LEARN <i class='fas'>&#xf46c;</i></b></h1>
+                        <h1 style="font-size: 7vh;"><b>ABOUT THE <br /> INJUSTICE</b></h1>
+                        <br>
+                    </div>
+                    <div class="col-2">
+        
+                    </div>
+                    <div class="col-5" style="text-align: left; padding-right: 10%; padding-top: 5%;">
+                        <div class="animate__animated animate__slideInRight mainmodal">
+                            <h1 class="cover-heading" style="font-size: 4vh;"><b>Never heard about environmental injustice?</b></h1>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead" style="font-size: 2vh;">
+                                Well, it is a simple concept: if you look at regions of lower socioeconomic status, you will find
+                                that they have worse environmental qualities and thus a lowered quality of life. Unfortunately, these poorer areas
+                                are mainly home to minority groups-those that fray away from the "mythical norm"(Lorde). This injustice is not a 
+                                random occurrence. It is an act of environmental racism.
+                            </p>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead">
+                                <a href="/info" class="btn btn-lg btn-secondary" style="font-size: 1.75vh; margin-right: 5px;">Learn More</a>
+                                <a id="start" class="btn btn-lg btn-secondary blank" style="font-size: 1.75vh;">Keep Scrolling</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section s4">
+            <div class="container-fluid" style="height: 80%; margin-bottom: 5%; margin-top: 5%">
+                <div class="row h-100" id="scrolldown">
+                    <div class="col-5" style="text-align:left; padding-left:12%; padding-top: 5%;">
+                        <h1 style="font-size: 9vh; color: rgb(24, 190, 255); white-space: nowrap;"><b>VISUALIZE <i class='fas fa-globe-americas'></i></b></h1>
+                        <h1 style="font-size: 7vh;"><b>THE <br /> INJUSTICE</b></h1>
+                        <br>
+                    </div>
+                    <div class="col-2">
+        
+                    </div>
+                    <div class="col-5" style=" padding-right: 10%; padding-top: 5%; text-align: left; ">
+                        <div class="mainmodal">
+                            <h1 class="cover-heading" style="font-size: 4vh;"><b>Already learned about the injustice?</b></h1>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead" style="font-size: 2vh;">
+                                Great to know you're informed! Check out our interactive map that ranks the counties around Atlanta
+                                based off our own injustice index. You can also select specific modes (water quality, air quality, wealth,
+                                 race, etc.) to see which counties have the greatest/worst qualities. The goal is for you to see the correlation 
+                                 between socioeconomic status/racial background and qualities of the environment.
+                            </p>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead">
+                                <a href="/map" class="btn btn-lg btn-secondary" style="font-size: 1.75vh; margin-right: 5px;">Visualize</a>
+                                <a id="start" class="btn btn-lg btn-secondary blank" style="font-size: 1.75vh;">Keep Scrolling</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section s5">
+            <div class="container-fluid" style="height: 80%; margin-bottom: 5%; margin-top: 5%">
+                <div class="row h-100" id="scrolldown">
+                    <div class="col-5" style="text-align:left; padding-left:12%; padding-top: 5%;">
+                        <h1 style="font-size: 9vh; color: rgb(24, 190, 255);"><b>ACT <i class='fas'>&#xf24e;</i></b></h1>
+                        <h1 style="font-size: 7vh;"><b>ON THE <br /> INJUSTICE</b></h1>
+                    </div>
+                    <div class="col-2">
+        
+                    </div>
+                    <div class="col-5" style="padding-right: 10%; padding-top: 5%; text-align: left;">
+                        <div class="mainmodal">
+                            <h1 class="cover-heading" style="font-size: 4vh;"><b>Already visualized the injustice?</b></h1>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead" style="font-size: 2vh;">
+                                We hope you liked the map! Give us feedback on <a href="https://github.com/MihirBafna/ATLEnvironmentalJustice">GitHub</a>. 
+                                Now, are you ready to act? We have provided relevant links and information for ways you to get involved. Together 
+                                we can make the change and fight this injustice.
+                            </p>
+                            <hr style="background-color: rgba(38, 47, 56, 0);">
+                            <p class="lead">
+                                <a href="/solutions" class="btn btn-lg btn-secondary" style="font-size: 1.75vh; margin-right: 5px;">Act Now</a>
+                                <a href="/references" class="btn btn-lg btn-secondary blank" style="font-size: 1.75vh;">See Our References</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <footer class="footer mastfoot mt-auto">
-        <div class=" inner">
-            <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a href="https://github.com/brettpietruszka">Brett Pietruszka</a> </p>
-        </div>
-    </footer>
+
 </div>
+<script>
+        new fullpage("#fullPage", {
+                autoScrolling: true,
+                navigation:true,
+                navigationPosition: 'left',
+                navigationTooltips: ['Home', 'Learn', 'Visualize', 'Act']
+            })
+        $(document).on('click', '#start', function () {
+            fullpage_api.moveSectionDown();
+        });
+</script>
 <script src="../static/js/index.js"></script>
 
 {% endblock %}

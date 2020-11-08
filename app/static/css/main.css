@@ -39,11 +39,14 @@ a:hover {
   color: rgba(255, 255, 255, .5);
   background-color: transparent;
   border-bottom: .25rem solid transparent;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+  color: rgb(24, 190, 255);
+  border-bottom-color:rgb(24, 190, 255);
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -68,5 +71,5 @@ a:hover {
  * Footer
  */
 .mastfoot {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255);
 }

@@ -243,7 +243,7 @@ $(document).ready(function () {
         iconSize: [32,32]
     }); 
 
-    var m_gainseville = L.marker([34.2979, -83.8241], {icon: AirQualityIcon}).bindPopup("Gainesville "),
+    var m_gainseville = L.marker([34.2979, -83.8241], { icon: AirQualityIcon }).bindPopup("Gainesville "),
         m_gwinnetttech = L.marker([33.9628, -84.0676], {icon: AirQualityIcon}).bindPopup("Gwinnett Tech"),
         m_georgiatech = L.marker([33.7756, -84.3963], {icon: AirQualityIcon}).bindPopup("Georgia Tech"),
         m_nationalguard = L.marker([33.7260405,-84.3602911], {icon: AirQualityIcon}).bindPopup("Atlanta National Guard Station"),
@@ -263,8 +263,10 @@ $(document).ready(function () {
     var overlayMaps = {
         "Air Quality": airquality_markers
     };
+    if (mode == "air") {
+        airquality_markers.addTo(map);
+    }
 
-    L.control.layers(null, overlayMaps).addTo(map);
 
     
     
