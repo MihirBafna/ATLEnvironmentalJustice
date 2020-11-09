@@ -23,7 +23,15 @@ var data = {
                 "IncomePerCapita": "$24,367",
                 "LSAD": "06",
                 "ALAND": 336205278,
-                "AWATER": 5926396
+                "AWATER": 5926396,
+                "MinorityPercentage" : 71.1,
+                /*
+                "RaceData" : {
+                    "Black/African American" : 26.2,
+                    "Asian/Pacific Islander" : 14.1,
+                    "White" : 78.9,
+                    "Hispanic/Latino" : 23.2
+                }*/
             },
             "geometry": {
                 "type": "Polygon",
@@ -95,7 +103,8 @@ var data = {
                 "AirQuality" : "16",
                 "IncomePerCapita": "$22,521",
                 "ALAND": 843525615,
-                "AWATER": 11170130
+                "AWATER": 11170130,
+                "MinorityPercentage" : 26.8,
             },
             "geometry": {
                 "type": "Polygon",
@@ -175,7 +184,8 @@ var data = {
                 "AirQuality" : "20",
                 "IncomePerCapita": "$22,241",
                 "ALAND": 1190219024,
-                "AWATER": 27368325
+                "AWATER": 27368325,
+                "MinorityPercentage" : 23.1,
             },
             "geometry": {
                 "type": "Polygon",
@@ -248,7 +258,8 @@ var data = {
                 "IncomePerCapita": "$30,217",
                 "LSAD": "06",
                 "ALAND": 1092190453,
-                "AWATER": 32938535
+                "AWATER": 32938535,
+                "MinorityPercentage" : 22.2,
             },
             "geometry": {
                 "type": "Polygon",
@@ -340,7 +351,8 @@ var data = {
                 "AirQuality" : "19",
                 "IncomePerCapita": "$37,211",
                 "ALAND": 580297280,
-                "AWATER": 59743068
+                "AWATER": 59743068,
+                "MinorityPercentage" : 31.0,
             },
             "geometry": {
                 "type": "Polygon",
@@ -413,7 +425,8 @@ var data = {
                 "IncomePerCapita": "$23,675",
                 "LSAD": "06",
                 "ALAND": 1017306098,
-                "AWATER": 94561948
+                "AWATER": 94561948,
+                "MinorityPercentage" : 29.9,
             },
             "geometry": {
                 "type": "Polygon",
@@ -506,7 +519,8 @@ var data = {
                 "IncomePerCapita": "$23,450",
                 "LSAD": "06",
                 "ALAND": 808832044,
-                "AWATER": 5309331
+                "AWATER": 5309331,
+                "MinorityPercentage" : 21.6,
             },
             "geometry": {
                 "type": "Polygon",
@@ -590,7 +604,8 @@ var data = {
                 "AirQuality" : "20",
                 "IncomePerCapita": "$33,110",
                 "ALAND": 879701643,
-                "AWATER": 12597293
+                "AWATER": 12597293,
+                "MinorityPercentage" : 48.9,
             },
             "geometry": {
                 "type": "Polygon",
@@ -682,7 +697,8 @@ var data = {
                 "Contaminants": 10, 
                 "AirQuality" : "21",
                 "ALAND": 1364178479,
-                "AWATER": 19792701
+                "AWATER": 19792701,
+                "MinorityPercentage" : 60.4,
             },
             "geometry": {
                 "type": "Polygon",
@@ -839,7 +855,8 @@ var data = {
                 "IncomePerCapita": "$20,523",
                 "LSAD": "06",
                 "ALAND": 1292492346,
-                "AWATER": 12284897
+                "AWATER": 12284897,
+                "MinorityPercentage" : 29.6,
             },
             "geometry": {
                 "type": "Polygon",
@@ -928,7 +945,8 @@ var data = {
                 "IncomePerCapita": "$24,515",
                 "LSAD": "06",
                 "ALAND": 518293193,
-                "AWATER": 2485429
+                "AWATER": 2485429,
+                "MinorityPercentage" : 72.6,
             },
             "geometry": {
                 "type": "Polygon",
@@ -993,7 +1011,8 @@ var data = {
                 "IncomePerCapita": "$26,161",
                 "LSAD": "06",
                 "ALAND": 1141971255,
-                "AWATER": 12730357
+                "AWATER": 12730357,
+                "MinorityPercentage" : 29.5,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1077,7 +1096,8 @@ var data = {
                 "AirQuality" : "21",
                 "IncomePerCapita": "$35,076",
                 "ALAND": 503398796,
-                "AWATER": 12846500
+                "AWATER": 12846500,
+                "MinorityPercentage" : 39.4,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1146,7 +1166,8 @@ var data = {
                 "IncomePerCapita": "$19,607",
                 "LSAD": "06",
                 "ALAND": 507333988,
-                "AWATER": 9602978
+                "AWATER": 9602978,
+                "MinorityPercentage" : 42.5,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1227,7 +1248,8 @@ var data = {
                 "IncomePerCapita": "$18,958",
                 "LSAD": "06",
                 "ALAND": 366862138,
-                "AWATER": 7057627
+                "AWATER": 7057627,
+                "MinorityPercentage" : 90.9,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1320,7 +1342,8 @@ var data = {
                 "IncomePerCapita": "$25,773",
                 "LSAD": "06",
                 "ALAND": 825200366,
-                "AWATER": 20443876
+                "AWATER": 20443876,
+                "MinorityPercentage" : 60.0,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1436,7 +1459,8 @@ var data = {
                 "AirQuality" : "18",
                 "IncomePerCapita": "$28,412",
                 "ALAND": 693055897,
-                "AWATER": 9198256
+                "AWATER": 9198256,
+                "MinorityPercentage" : 70.7,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1525,7 +1549,8 @@ var data = {
                 "IncomePerCapita": "$21,583",
                 "LSAD": "06",
                 "ALAND": 704988503,
-                "AWATER": 18130753
+                "AWATER": 18130753,
+                "MinorityPercentage" : 56.1,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1618,7 +1643,8 @@ var data = {
                 "IncomePerCapita": "$26,901",
                 "LSAD": "06",
                 "ALAND": 1114908667,
-                "AWATER": 16358522
+                "AWATER": 16358522,
+                "MinorityPercentage" : 64.6,
             },
             "geometry": {
                 "type": "Polygon",
@@ -1715,7 +1741,8 @@ var data = {
                 "IncomePerCapita": "$20,882",
                 "LSAD": "06",
                 "ALAND": 415349721,
-                "AWATER": 6642220
+                "AWATER": 6642220,
+                "MinorityPercentage" : 30.6,
             },
             "geometry": {
                 "type": "Polygon",
