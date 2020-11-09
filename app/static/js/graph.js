@@ -1,10 +1,14 @@
+const WW_COLOR = "rgba(0,191,255,1)";
+const RW_COLOR = "rgba(148,0,211,1)";
+const WA_COLOR = "rgba(50,205,50,1)";
+const RA_COLOR = "rgba(255,99,71,1)";
+
 const GRAPH = document.getElementById("dataGraph");
 
-var wealth_water = {
+const wealth_wat = {
     label: 'Wealth - Water',
-    backgroundColor: "rgba(0,0,128,1)",
-    pointRadius: 1,
-    borderColor: "#ffffff",
+    backgroundColor: WW_COLOR,
+    fill: false,
     data: [{x: data.features[8].properties.IncomePerCapita.substring(1,3)
             + data.features[8].properties.IncomePerCapita.substring(4),
             y: data.features[8].properties.TapWater}, // Fulton
@@ -65,16 +69,13 @@ var wealth_water = {
         {x: data.features[1].properties.IncomePerCapita.substring(1,3)
             + data.features[1].properties.IncomePerCapita.substring(4),
             y: data.features[1].properties.TapWater}, // Walton
-        ],
-
-    fill: false,
+],
 };
 
-var race_water = {
+const race_wat = {
     label: 'Race - Water',
     fill: false,
-    backgroundColor: "rgba(0,0,256,1)",
-    borderColor: "rgba(256,0,0,1)",
+    backgroundColor: RW_COLOR,
     data: [{x: data.features[8].properties.MinorityPercentage,
             y: data.features[8].properties.TapWater}, // Fulton
         {x: data.features[19].properties.MinorityPercentage,
@@ -118,11 +119,10 @@ var race_water = {
 ],
 };
 
-var wealth_air = {
+const wealth_air = {
     label: 'Wealth - Air',
     fill: false,
-    backgroundColor: "rgba(0,0,256,1)",
-    borderColor: "rgba(256,0,0,1)",
+    backgroundColor: WA_COLOR,
     data: [{x: data.features[8].properties.IncomePerCapita.substring(1,3)
             + data.features[8].properties.IncomePerCapita.substring(4),
             y: data.features[8].properties.AirQuality}, // Fulton
@@ -187,11 +187,10 @@ var wealth_air = {
 
 };
 
-var race_air = {
+const race_air = {
     label: 'Race - Air',
     fill: false,
-    backgroundColor: "rgba(0,0,256,1)",
-    borderColor: "rgba(256,0,0,1)",
+    backgroundColor: RA_COLOR,
     data: [{x: data.features[8].properties.MinorityPercentage,
         y: data.features[8].properties.AirQuality}, // Fulton
     {x: data.features[19].properties.MinorityPercentage,
@@ -235,10 +234,101 @@ var race_air = {
 ],
 };
 
+// Wealth Water Regression
+var wwReg = {
+    label: "Wealth vs Water Regression",
+    showLine: true,
+    fill: false, 
+    backgroundColor: WW_COLOR,
+    data: [],
+};
+
+var rwReg = {
+    label: "Race vs Water Regression",
+    showLine: true,
+    fill: false, 
+    backgroundColor: RW_COLOR,
+    data: [],
+};
+
+var waReg = {
+    label: "Wealth vs AirRegression",
+    showLine: true,
+    fill: false, 
+    backgroundColor: WA_COLOR,
+    data: [],
+};
+
+var raReg = {
+    label: "Race vs Air Regression",
+    showLine: true,
+    fill: false, 
+    backgroundColor: RA_COLOR,
+    data: [],
+};
+
+var tempList = [wealth_wat,race_wat,wealth_air,race_air];
+var outputList = [wwReg,rwReg,waReg,raReg];
+for (let index = 0; index < tempList.length; index++) {
+    var n = tempList[index].data.length;
+    var avgX = 0;
+    var avgY = 0;
+    var numerator = 0;
+    var denom = 0;
+    for (let i = 0; i < n; i++) {
+        var xVal, yVal;
+        if(typeof tempList[index].data[i].x == "string") {
+            xVal = parseInt(tempList[index].data[i].x,10);
+        }
+        else {
+            xVal = tempList[index].data[i].x;
+        }
+
+        if(typeof tempList[index].data[i].y == "string") {
+            yVal = parseInt(tempList[index].data[i].y,10);
+        }
+        else {
+            yVal = tempList[index].data[i].y;
+        }
+        numerator +=  xVal * yVal;
+        denom += xVal * xVal;
+        avgX += xVal;
+        avgY +- yVal;
+    }
+    avgX /= n;
+    avgY /= n;
+    numerator -= n * avgX * avgY;
+    denom -= n * avgX * avgX;
+
+    m = numerator / denom;
+    console.log(m);
+
+    if(index % 2 == 0) {
+        let xVal1 = 15000;
+        let yVal1 = avgY + m * (xVal1 - avgX);
+        let xVal2 = 40000;
+        let yVal2 = avgY + m * (xVal2 - avgX);;
+        outputList[index].data.push({x: xVal1, y: yVal1})
+        outputList[index].data.push({x: xVal2, y: yVal2})
+    }
+    else {
+        let xVal1 = 20;
+        let yVal1 = avgY + m * (xVal1 - avgX);
+        let xVal2 = 100;
+        let yVal2 = avgY + m * (xVal2 - avgX);;
+        outputList[index].data.push({x: xVal1, y: yVal1});
+        outputList[index].data.push({x: xVal2, y: yVal2});
+    }
+    
+    
+}
+
+
+// Options for Chart
 var config = {
     type: "scatter",
     data: {
-        datasets: [wealth_water]
+        datasets: [wealth_wat,wwReg],
     },
     options: {
         chartArea : {
@@ -247,7 +337,7 @@ var config = {
         responsive: true,
         title: {
             display: true,
-            text: 'Chart.js Scatter Plot'
+            text: 'Wealth vs Water Quality'
         },
         tooltips: {
             mode: 'index',
@@ -257,16 +347,26 @@ var config = {
             intersect: true
         },
         scales: {
-            xAxes: {
+            xAxes: [{
                 type: 'linear',
                 position: 'bottom',
-            },
-            yAxes: {
-                ticks: {
-                    min: 16,
-                    max: 27,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'GDP Per Capita',
                 },
-            }
+                ticks: {
+                    
+                },
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Water Quality',
+                },
+                ticks: {
+                
+                },
+            }]
         }
     },
 
@@ -277,48 +377,82 @@ var graph = new Chart(GRAPH, config);
 
 
 document.getElementById('wealth-water').addEventListener('click', function() {
-    config.data.datasets.pop()
-    config.data.datasets.push(wealth_water);
+    config.data.datasets.pop();
+    config.data.datasets.pop();
+    config.options.title.text = "Wealth vs Water Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "GDP Per Capita";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality";
+    
+    // Ticks
+    config.options.scales.yAxes[0].ticks.min = 8;
+    config.options.scales.yAxes[0].ticks.max = 11;
+    config.options.scales.xAxes[0].ticks.min = 15000;
+    config.options.scales.xAxes[0].ticks.max = 40000;
+
+
+    config.data.datasets.push(wealth_wat);
+    config.data.datasets.push(wwReg);
+
     
     graph.update();
 });
 
 document.getElementById('race-water').addEventListener('click', function() {
-    config.data.datasets.pop()
-    config.data.datasets.push(race_water);
+    config.data.datasets.pop();
+    config.data.datasets.pop();
+    config.options.title.text = "Race vs Water Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Minority Percentage";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality";
+
+    // Ticks 
+    config.options.scales.yAxes[0].ticks.min = 8;
+    config.options.scales.yAxes[0].ticks.max = 11;
+    config.options.scales.xAxes[0].ticks.min = 20;
+    config.options.scales.xAxes[0].ticks.max = 100;
+
+    config.data.datasets.push(race_wat);
+    config.data.datasets.push(rwReg);
+
     
     graph.update();
 });
 
 document.getElementById('wealth-air').addEventListener('click', function() {
-    config.data.datasets.pop()
+    config.data.datasets.pop();
+    config.data.datasets.pop();
+    config.options.title.text = "Wealth vs Air Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "GDP Per Capita";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality";
+
+    // Ticks
+    
+    config.options.scales.yAxes[0].ticks.min = 16;
+    config.options.scales.yAxes[0].ticks.max = 28;
+    config.options.scales.xAxes[0].ticks.min = 15000;
+    config.options.scales.xAxes[0].ticks.max = 40000;
+
     config.data.datasets.push(wealth_air);
+    config.data.datasets.push(waReg);
     
     graph.update();
 });
 
 document.getElementById('race-air').addEventListener('click', function() {
-    config.data.datasets.pop()
+    config.data.datasets.pop();
+    config.data.datasets.pop();
+    config.options.title.text = "Race vs Air Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Minority Percentage";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality";
+
+    // Ticks
+   config.options.scales.yAxes[0].ticks.min = 16;
+    config.options.scales.yAxes[0].ticks.max = 28;
+    config.options.scales.xAxes[0].ticks.min = 20;
+    config.options.scales.xAxes[0].ticks.max = 100;
+
     config.data.datasets.push(race_air);
+    config.data.datasets.push(raReg);
+
     
     graph.update();
 });
-/*
-<div style="width: 45%">
-        <button id="wealth-water" class="btn btn-sm btn-secondary">Wealth vs Water Quality</button>
-        <button id="race-water" class="btn btn-sm btn-secondary">Race vs Water Quality</button>
-        <button id="wealth-air" class="btn btn-sm btn-secondary">Wealth vs Air Quality</button>
-        <button id="race-air" class="btn btn-sm btn-secondary">Race vs Air Quality</button>
-    </div>
-     <!-- For the Chart Section for now -->
-        <div style="width: 45%;">
-            <canvas id="dataGraph" height="400" width="400" style="border:solid"></canvas>
-        </div>
-        <!--script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script-->
-        <script src="https://cdnjs.cloudfare.com/ajax/libs/Chart/2.8.0/Chart.min.js"></script>
-        <script src="../static/js/atlantacounties.js"></script>
-        <script src="../static/js/graph.js"></script>
-        
-        
-
-    <br><br></br>*/
