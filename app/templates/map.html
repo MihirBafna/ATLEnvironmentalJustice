@@ -123,11 +123,27 @@
                     </div>
                 </div>
         </div>
-        <div class="section s2">
+        <div class="section s2" style="padding-left: 50px;">
             
+            <div style="width: 45%">
+                <button id="wealth-water" class="btn btn-sm btn-secondary">Wealth vs Water Quality</button>
+                <button id="race-water" class="btn btn-sm btn-secondary">Race vs Water Quality</button>
+                <button id="wealth-air" class="btn btn-sm btn-secondary">Wealth vs Air Quality</button>
+                <button id="race-air" class="btn btn-sm btn-secondary">Race vs Air Quality</button>
+            </div>
+            <!-- For the Chart Section for now -->
+            <div style="width: 45%;">
+                <canvas id="dataGraph" height="400" width="400" style="border:solid; background-color: aliceblue;"></canvas>
+            </div>
+            <!--script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script-->
+            <script src="https://cdnjs.cloudfare.com/ajax/libs/Chart/2.8.0/Chart.min.js"></script>
+            <script src="../static/js/atlantacounties.js"></script>
+            <script src="../static/js/graph.js"></script>
+        
+                
         </div>
     </div>
-    
+    <br><br></br>
     </div>
     <footer class="footer mastfoot mt-auto">
         <div class=" inner">

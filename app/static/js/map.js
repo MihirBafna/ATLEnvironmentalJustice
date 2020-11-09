@@ -26,7 +26,6 @@ $(document).ready(function () {
         fetch(fileName)
             .then(response => response.text())
             .then(data => {
-                console.log(fileName);
                 document.getElementById("county-script").innerHTML = '<p style="font-family: Helvetica Neue; padding:2%; text-align: left;"'+contentToHtml2(data)+'</p>';
         });
 
