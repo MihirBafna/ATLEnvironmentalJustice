@@ -2,7 +2,7 @@
 function contentToHtml(text) {
     return text
     .split('\n\n')
-    .map(paragraph => `<p class="info-page">${paragraph}</p>`)
+        .map(paragraph => `<p class="info-page" "style="font-family: Helvetica Neue; padding:2%; text-align: left;">${paragraph}</p>`)
     .join('')
 }
 
