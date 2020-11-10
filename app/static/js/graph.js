@@ -239,7 +239,9 @@ var wwReg = {
     label: "Wealth vs Water Regression",
     showLine: true,
     fill: false, 
-    backgroundColor: WW_COLOR,
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: WW_COLOR,
     data: [],
 };
 
@@ -247,7 +249,9 @@ var rwReg = {
     label: "Race vs Water Regression",
     showLine: true,
     fill: false, 
-    backgroundColor: RW_COLOR,
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: RW_COLOR,
     data: [],
 };
 
@@ -255,7 +259,9 @@ var waReg = {
     label: "Wealth vs AirRegression",
     showLine: true,
     fill: false, 
-    backgroundColor: WA_COLOR,
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: WA_COLOR,
     data: [],
 };
 
@@ -263,9 +269,13 @@ var raReg = {
     label: "Race vs Air Regression",
     showLine: true,
     fill: false, 
-    backgroundColor: RA_COLOR,
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: RA_COLOR,
     data: [],
 };
+
+
 
 var tempList = [wealth_wat,race_wat,wealth_air,race_air];
 var outputList = [wwReg,rwReg,waReg,raReg];
@@ -293,15 +303,15 @@ for (let index = 0; index < tempList.length; index++) {
         numerator +=  xVal * yVal;
         denom += xVal * xVal;
         avgX += xVal;
-        avgY +- yVal;
+        avgY += yVal;
     }
+    
     avgX /= n;
     avgY /= n;
     numerator -= n * avgX * avgY;
     denom -= n * avgX * avgX;
 
     m = numerator / denom;
-    console.log(m);
 
     if(index % 2 == 0) {
         let xVal1 = 15000;
@@ -322,6 +332,7 @@ for (let index = 0; index < tempList.length; index++) {
     
     
 }
+
 
 
 // Options for Chart

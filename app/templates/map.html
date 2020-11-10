@@ -16,6 +16,27 @@
         background-attachment: fixed; */
     }
 
+    .split {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+    
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .right {
+        right: 0;
+        transform: translate(0,800px);
+        width: 40%;
+        padding-right: 50px;
+    }
     p.county-info {
         font: 15px "Times New Roman";
         text-align: left;
@@ -125,25 +146,36 @@
         </div>
         <div class="section s2" style="padding-left: 50px;">
             
-            <div style="width: 45%">
-                <button id="wealth-water" class="btn btn-sm btn-secondary">Wealth vs Water Quality</button>
-                <button id="race-water" class="btn btn-sm btn-secondary">Race vs Water Quality</button>
-                <button id="wealth-air" class="btn btn-sm btn-secondary">Wealth vs Air Quality</button>
-                <button id="race-air" class="btn btn-sm btn-secondary">Race vs Air Quality</button>
+            <div>
+                <div style="width: 50%; height: 10%; padding-left: -10px;">
+                    <button id="wealth-water" class="btn btn-sm btn-secondary">Wealth vs Water Quality</button>
+                    <button id="race-water" class="btn btn-sm btn-secondary">Race vs Water Quality</button>
+                    <button id="wealth-air" class="btn btn-sm btn-secondary">Wealth vs Air Quality</button>
+                    <button id="race-air" class="btn btn-sm btn-secondary">Race vs Air Quality</button>
+                </div>
+                <!-- For the Chart Section for now -->
+                <div style="width: 45%; height: 90%; padding-bottom: 25px;">
+                    <canvas id="dataGraph" height="400" width="400" style="border:solid; background-color: aliceblue;"></canvas>
+                </div>
+                <!--script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script-->
+                <script src="https://cdnjs.cloudfare.com/ajax/libs/Chart/2.8.0/Chart.min.js"></script>
+                <script src="../static/js/atlantacounties.js"></script>
+                <script src="../static/js/graph.js"></script>
             </div>
-            <!-- For the Chart Section for now -->
-            <div style="width: 45%;">
-                <canvas id="dataGraph" height="400" width="400" style="border:solid; background-color: aliceblue;"></canvas>
+            
+
+            <div class="split right">
+                <h1>Analysis</h1>
+                <p>The data presented on the map and in the chart display an interesting 
+                    relationship between certain socioeconomic factors and environmentaly quality.... (to be completed later)
+
+                </p>
+                <a href="/solutions" class="btn btn-lg btn-secondary">Make a Difference!</a>
             </div>
-            <!--script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script-->
-            <script src="https://cdnjs.cloudfare.com/ajax/libs/Chart/2.8.0/Chart.min.js"></script>
-            <script src="../static/js/atlantacounties.js"></script>
-            <script src="../static/js/graph.js"></script>
         
                 
         </div>
     </div>
-    <br><br></br>
     </div>
     <footer class="footer mastfoot mt-auto">
         <div class=" inner">
