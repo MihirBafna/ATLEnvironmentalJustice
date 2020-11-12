@@ -21,6 +21,7 @@ var data = {
                 "Contaminants" : 13,
                 "AirQuality" : "19",
                 "IncomePerCapita": "$24,367",
+                "AApercent":57.0,
                 "LSAD": "06",
                 "ALAND": 336205278,
                 "AWATER": 5926396,

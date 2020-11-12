@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var geojson;
+    initialize();
     $(".legend").css({ 'border': '#3182bd solid 5px' })
 
     var map = L.map('mapid', { minZoom: 8, zoomControl: false, attributionControl: false }).setView([33.742612777346885, -84.38873291015625], 9); //georgia:32.709/-83.156 // Atlanta :-84.38873291015625,/ 33.742612777346885
@@ -11,7 +12,6 @@ $(document).ready(function () {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoibWloaXJiYWZuYSIsImEiOiJja2dsbGJkOW8wMng0MnJueXRnbGJ2YzZiIn0.Dv_yc4MNQCvKKt_ZEZ8aSw'
     }).addTo(map);
-    initialize();
 
     function contentToHtml2(text) {
         return text
@@ -49,7 +49,11 @@ $(document).ready(function () {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio5").prop("checked", true);
-        }else {
+        } else if (mode == "minority") {
+            $(".info").css({ 'border': '#f16913 solid 5px' })
+            $(".legend").css({ 'border': '#f16913 solid 5px' })
+            $("#radio5").prop("checked", true);
+        } else {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio1").prop("checked", true);
@@ -75,7 +79,13 @@ $(document).ready(function () {
                     d > 24 ? '#66c2a4' :
                         d > 21 ? '#99d8c9' :
                             '#ccece6';
-        }
+        } else if (mode == "minority") {
+            return d > 90 ? '#d94801' :
+                d > 70 ? '#f16913' :
+                    d > 50 ? '#fd8d3c' :
+                        d > 30 ? '#fdae6b' :
+                            '#fdd0a2';
+        } 
     }
 
     function style(feature) {
@@ -100,6 +110,15 @@ $(document).ready(function () {
         } else if (mode == "wealth") {
             return {
                 fillColor: getColor(feature.properties.IncomePerCapita.substring(1,3)),
+                weight: 2,
+                opacity: 1,
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        } else if (mode == "minority") {
+            return {
+                fillColor: getColor(feature.properties.MinorityPercentage),
                 weight: 2,
                 opacity: 1,
                 color: '#FFF',
@@ -181,6 +200,9 @@ $(document).ready(function () {
         } else if (mode == "wealth") {
             this._div.innerHTML = '<h4 style="font: 16px">Wealth</h4>' + (props ?
                 '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover/Click on a county </b>');
+        } else if (mode == "minority") {
+            this._div.innerHTML = '<h4 style="font: 16px">Minority Percentage</h4>' + (props ?
+                '<b style="color:#f16913">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#f16913">Percentage of Minorities:</b><b> ' + props.MinorityPercentage + '%' : '<b style="color:#f16913"> Hover/Click on a county </b>');
         }
         else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
@@ -228,6 +250,17 @@ $(document).ready(function () {
             for (var i = 0; i < grades.length; i++) {
                 this._div.innerHTML +=
                     '<i style="background:' + getColor(grades[i].substring(1,3)) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+            }
+        } else if (mode == "minority") {
+            var grades = ["10%", "30%", "50%", "70%", "90%"],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                console.log(parseInt(grades[i].substring(0, grades[i].length - 1))+1)
+                this._div.innerHTML +=
+                    '<i style="background:' + getColor(parseInt(grades[i].substring(0,grades[i].length-1))+1) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
             }
         }
