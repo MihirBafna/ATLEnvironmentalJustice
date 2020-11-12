@@ -89,7 +89,10 @@
         background: rgb(35, 41, 46,0.8);
         height:30%;
     }
-
+    .green{
+        background: #0F7A01; 
+        border: #0F7A01 solid 1px;
+    }
     .myrow{
         /* border: #fff solid 3px; */
         align-items: center;
