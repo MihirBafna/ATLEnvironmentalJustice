@@ -456,11 +456,10 @@ document.getElementById('race-air').addEventListener('click', function() {
     config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality";
 
     // Ticks
-   config.options.scales.yAxes[0].ticks.min = 16;
+    config.options.scales.yAxes[0].ticks.min = 16;
     config.options.scales.yAxes[0].ticks.max = 28;
     config.options.scales.xAxes[0].ticks.min = 20;
-    config.options.scales.xAxes[0].ticks.max = 100;
-
+    config.options.scales.xAxes[0].ticks.max = 100; 
     config.data.datasets.push(race_air);
     config.data.datasets.push(raReg);
 
