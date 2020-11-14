@@ -37,26 +37,36 @@ $(document).ready(function () {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio2").prop("checked", true);
+            $("#info").text("The water quality statistics indicate tap water quality based off of number of contaminants. The higher the number (darker the shade), the worse the quality (more contaminants).")
+            $("#infodiv").css({ 'border': '#3182bd solid 5px', 'color':'#3182bd' });
         } else if (mode == "air") {
             $(".info").css({ 'border': '#df65b0 solid 5px' })
             $(".legend").css({ 'border': '#df65b0 solid 5px' })
             $("#radio3").prop("checked", true);
+            $("#info").text("The air quality statistics are measured at the locations of the various cloud icons. The higher the air quality index (darker the shade), the worse the air quality.")
+            $("#infodiv").css({ 'border': '#df65b0 solid 5px', 'color': '#df65b0' });
         } else if (mode == "wealth") {
             $(".info").css({ 'border': '#2ca25f solid 5px' })
-            $(".legend").css({ 'border': '#2ca25fsolid 5px' })
+            $(".legend").css({ 'border': '#2ca25f solid 5px' })
             $("#radio4").prop("checked", true);
+            $("#info").text("The wealth statistic is based off of per capita income. The higher the per capita income (darker the shade), the wealthier the region.")
+            $("#infodiv").css({ 'border': '#2ca25f solid 5px', 'color': '#2ca25f' });
         } else if (mode == "race") {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
-            $("#radio5").prop("checked", true);
+            $("#radio6").prop("checked", true);
         } else if (mode == "minority") {
             $(".info").css({ 'border': '#f16913 solid 5px' })
             $(".legend").css({ 'border': '#f16913 solid 5px' })
             $("#radio5").prop("checked", true);
+            $("#info").text("The racial demographic statistic is based off of the percentage of minorities in the region. The higher the number (darker the shade), the higher % minorities there are.")
+            $("#infodiv").css({ 'border': '#f16913 solid 5px', 'color': '#f16913' });
         } else {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio1").prop("checked", true);
+            $("#info").text("")
+            $("#infodiv").css({ 'border': '#f16913 solid 5px', 'color': '#f16913' });
         }
     }
 
@@ -201,7 +211,7 @@ $(document).ready(function () {
             this._div.innerHTML = '<h4 style="font: 16px">Wealth</h4>' + (props ?
                 '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover/Click on a county </b>');
         } else if (mode == "minority") {
-            this._div.innerHTML = '<h4 style="font: 16px">Minority Percentage</h4>' + (props ?
+            this._div.innerHTML = '<h4 style="font: 16px">Race</h4>' + (props ?
                 '<b style="color:#f16913">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#f16913">Percentage of Minorities:</b><b> ' + props.MinorityPercentage + '%' : '<b style="color:#f16913"> Hover/Click on a county </b>');
         }
         else {

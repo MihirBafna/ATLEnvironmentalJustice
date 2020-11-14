@@ -1,7 +1,7 @@
-const WW_COLOR = "rgba(0,191,255,1)";
-const RW_COLOR = "rgba(148,0,211,1)";
-const WA_COLOR = "rgba(50,205,50,1)";
-const RA_COLOR = "rgba(255,99,71,1)";
+const WW_COLOR = "rgba(45, 187, 235,1)";
+const RW_COLOR = "rgba(255, 92, 10,1)";
+const WA_COLOR = "rgba(45, 186, 91,1)";
+const RA_COLOR = "rgba(255, 54, 174,1)";
 
 const GRAPH = document.getElementById("dataGraph");
 
@@ -256,7 +256,7 @@ var rwReg = {
 };
 
 var waReg = {
-    label: "Wealth vs AirRegression",
+    label: "Wealth vs Air Regression",
     showLine: true,
     fill: false, 
     backgroundColor: "rgb(0,0,0,0)",
@@ -274,6 +274,7 @@ var raReg = {
     borderColor: RA_COLOR,
     data: [],
 };
+
 
 
 
@@ -333,22 +334,23 @@ for (let index = 0; index < tempList.length; index++) {
     
 }
 
+
 // Options for Chart
 var config = {
     type: "scatter",
     data: {
         datasets: [wealth_wat,wwReg],
     },
-    pointRadius: 4,
-    pointHoverRadius: 5,
+    pointRadius: 5,
+    pointHoverRadius: 6,
     options: {
         chartArea : {
-            backgroundColor: "rgba(255,67,83,1)"
+            backgroundColor: "#084594"
         },
         responsive: true,
         title: {
             display: true,
-            text: 'Wealth vs Water Quality'
+            text: ''
         },
         tooltips: {
             mode: 'index',
@@ -382,24 +384,116 @@ var config = {
     },
 
 }
+
+const indexdata = {
+    label: 'Counties Ranked',
+    backgroundColor: WW_COLOR,
+    trendlineLinear: {
+        style: "rgb(43 ,66 ,255, 0.3)",
+        lineStyle: "dotted|solid",
+        width: 2
+    },
+    fill: false,
+    data: [
+    ],
+};
+
+var airqualities = [];
+var waterqualities=[];
+var monies = [];
+
+for(var i=0;i<20;i++){
+    airqualities.push(parseInt(data.features[i].properties.AirQuality))
+    waterqualities.push(parseInt(data.features[i].properties.Contaminants))
+    monies.push(parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)));
+}
+// console.log(Math.min(airqualities),Math.max(air))
+for (var i = 0; i < 20; i++) {
+    var env = (parseInt(parseInt(data.features[i].properties.AirQuality)- Math.min.apply(Math,airqualities))/(Math.max.apply(Math,airqualities)-Math.min.apply(Math,airqualities))+ (data.features[i].properties.Contaminants-Math.min.apply(Math,waterqualities))/(Math.max.apply(Math,waterqualities)-Math.min.apply(Math,waterqualities)))/2;
+    var soc = (parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)) - Math.min.apply(Math, monies)) / (Math.max.apply(Math, monies) - Math.min.apply(Math, monies));
+    sc = Math.round((soc + Number.EPSILON) * 100) / 100;
+    indexdata.data.push({ x: env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
+}
+console.log(indexdata)
+
+var indexconfig = {
+    type: "scatter",
+    data: {
+        datasets: [indexdata],
+        pointRadius: 7,
+        pointHoverRadius: 8,
+    },
+
+    options: {
+        chartArea: {
+            backgroundColor: "#084594"
+        },
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Socioeconomic Factors vs Environmental Factors'
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    var label = " " + data.datasets[0].data[tooltipItem.index].name + " : (" + data.datasets[0].data[tooltipItem.index].x + "," + data.datasets[0].data[tooltipItem.index].y+")";
+                    return label;
+                }
+            }
+        },
+        hover: {
+            intersect: true
+        },
+        scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom',
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Environmental Factors',
+                },
+                ticks: {
+
+                },
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Socioeconomic Factors',
+                },
+                ticks: {
+
+                },
+            }]
+        }
+    },
+
+}
+
 Chart.defaults.global.defaultFontColor = 'white';
 Chart.defaults.global.defaultFontSize = 16;
 
 
-var graph = new Chart(GRAPH, config);
-
+var graph = new Chart(GRAPH, indexconfig);
+document.getElementById('atlenvjustice').addEventListener('click', function () {
+    graph.destroy();
+    indexconfig.options.scales.yAxes[0].ticks.min = 0;
+    indexconfig.options.scales.yAxes[0].ticks.max = 1.1;
+    indexconfig.options.scales.xAxes[0].ticks.min = 0;
+    indexconfig.options.scales.xAxes[0].ticks.max = 1.1;
+    graph = new Chart(GRAPH, indexconfig);
+});
 
 document.getElementById('wealth-water').addEventListener('click', function() {
     graph.destroy();
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Wealth vs Water Quality";
-    config.options.scales.xAxes[0].scaleLabel.labelString = "GDP Per Capita";
-    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality";
-    
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Income Per Capita ($)";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality (# of Contaminants)";
     // Ticks
-    config.options.scales.yAxes[0].ticks.min = 8;
-    config.options.scales.yAxes[0].ticks.max = 11;
+    config.options.scales.yAxes[0].ticks.min = 4;
+    config.options.scales.yAxes[0].ticks.max = 13;
     config.options.scales.xAxes[0].ticks.min = 15000;
     config.options.scales.xAxes[0].ticks.max = 40000;
 
@@ -414,14 +508,14 @@ document.getElementById('race-water').addEventListener('click', function() {
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Race vs Water Quality";
-    config.options.scales.xAxes[0].scaleLabel.labelString = "Minority Percentage";
-    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Race (Minority %)";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality (# of Contaminants)";
 
     // Ticks 
-    config.options.scales.yAxes[0].ticks.min = 8;
-    config.options.scales.yAxes[0].ticks.max = 11;
+    config.options.scales.yAxes[0].ticks.min = 4;
+    config.options.scales.yAxes[0].ticks.max = 13;
     config.options.scales.xAxes[0].ticks.min = 20;
-    config.options.scales.xAxes[0].ticks.max = 100;
+    config.options.scales.xAxes[0].ticks.max = 95;
 
     config.data.datasets.push(race_wat);
     config.data.datasets.push(rwReg);
@@ -434,12 +528,12 @@ document.getElementById('wealth-air').addEventListener('click', function() {
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Wealth vs Air Quality";
-    config.options.scales.xAxes[0].scaleLabel.labelString = "GDP Per Capita";
-    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Income Per Capita ($)";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality Index";
 
     // Ticks
     
-    config.options.scales.yAxes[0].ticks.min = 16;
+    config.options.scales.yAxes[0].ticks.min = 8;
     config.options.scales.yAxes[0].ticks.max = 28;
     config.options.scales.xAxes[0].ticks.min = 15000;
     config.options.scales.xAxes[0].ticks.max = 40000;
@@ -455,11 +549,11 @@ document.getElementById('race-air').addEventListener('click', function() {
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Race vs Air Quality";
-    config.options.scales.xAxes[0].scaleLabel.labelString = "Minority Percentage";
-    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality";
+    config.options.scales.xAxes[0].scaleLabel.labelString = "Race (Minority %)";
+    config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality Index";
 
     // Ticks
-   config.options.scales.yAxes[0].ticks.min = 16;
+   config.options.scales.yAxes[0].ticks.min = 8;
     config.options.scales.yAxes[0].ticks.max = 28;
     config.options.scales.xAxes[0].ticks.min = 20;
     config.options.scales.xAxes[0].ticks.max = 100;

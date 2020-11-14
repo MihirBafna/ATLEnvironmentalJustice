@@ -3,10 +3,16 @@ canvas{
     height:80vh !important;
 
 }
+/* input[type=radio]{
+    margin-bottom: 1vh !important;
+    /* height: 5vh; */
 #mapid {
     height: 80vh;
     width: 100%;
     border-radius: 10px;
+}
+#start:hover{
+    cursor: pointer;
 }
 .modal-dialog {
   position: absolute;
