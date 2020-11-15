@@ -69,7 +69,7 @@ const wealth_wat = {
         {x: data.features[1].properties.IncomePerCapita.substring(1,3)
             + data.features[1].properties.IncomePerCapita.substring(4),
             y: data.features[1].properties.TapWater}, // Walton
-],
+    ],
 };
 
 const race_wat = {
@@ -333,14 +333,14 @@ for (let index = 0; index < tempList.length; index++) {
     
 }
 
-
-
 // Options for Chart
 var config = {
     type: "scatter",
     data: {
         datasets: [wealth_wat,wwReg],
     },
+    pointRadius: 4,
+    pointHoverRadius: 5,
     options: {
         chartArea : {
             backgroundColor: "rgba(255,67,83,1)"
@@ -382,12 +382,15 @@ var config = {
     },
 
 }
+Chart.defaults.global.defaultFontColor = 'white';
+Chart.defaults.global.defaultFontSize = 16;
 
 
 var graph = new Chart(GRAPH, config);
 
 
 document.getElementById('wealth-water').addEventListener('click', function() {
+    graph.destroy();
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Wealth vs Water Quality";
@@ -403,12 +406,11 @@ document.getElementById('wealth-water').addEventListener('click', function() {
 
     config.data.datasets.push(wealth_wat);
     config.data.datasets.push(wwReg);
-
-    
-    graph.update();
+    graph = new Chart(GRAPH, config);
 });
 
 document.getElementById('race-water').addEventListener('click', function() {
+    graph.destroy();
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Race vs Water Quality";
@@ -424,11 +426,11 @@ document.getElementById('race-water').addEventListener('click', function() {
     config.data.datasets.push(race_wat);
     config.data.datasets.push(rwReg);
 
-    
-    graph.update();
+    graph = new Chart(GRAPH, config);
 });
 
 document.getElementById('wealth-air').addEventListener('click', function() {
+    graph.destroy();
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Wealth vs Air Quality";
@@ -445,10 +447,11 @@ document.getElementById('wealth-air').addEventListener('click', function() {
     config.data.datasets.push(wealth_air);
     config.data.datasets.push(waReg);
     
-    graph.update();
+    graph = new Chart(GRAPH, config);
 });
 
 document.getElementById('race-air').addEventListener('click', function() {
+    graph.destroy();
     config.data.datasets.pop();
     config.data.datasets.pop();
     config.options.title.text = "Race vs Air Quality";
@@ -463,6 +466,6 @@ document.getElementById('race-air').addEventListener('click', function() {
     config.data.datasets.push(race_air);
     config.data.datasets.push(raReg);
 
-    
-    graph.update();
+
+    graph = new Chart(GRAPH, config);
 });

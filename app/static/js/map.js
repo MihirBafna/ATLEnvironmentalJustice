@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var geojson;
+    initialize();
     $(".legend").css({ 'border': '#3182bd solid 5px' })
 
     var map = L.map('mapid', { minZoom: 8, zoomControl: false, attributionControl: false }).setView([33.742612777346885, -84.38873291015625], 9); //georgia:32.709/-83.156 // Atlanta :-84.38873291015625,/ 33.742612777346885
@@ -11,7 +12,6 @@ $(document).ready(function () {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoibWloaXJiYWZuYSIsImEiOiJja2dsbGJkOW8wMng0MnJueXRnbGJ2YzZiIn0.Dv_yc4MNQCvKKt_ZEZ8aSw'
     }).addTo(map);
-    initialize();
 
     function contentToHtml2(text) {
         return text
@@ -49,7 +49,11 @@ $(document).ready(function () {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio5").prop("checked", true);
-        }else {
+        } else if (mode == "minority") {
+            $(".info").css({ 'border': '#f16913 solid 5px' })
+            $(".legend").css({ 'border': '#f16913 solid 5px' })
+            $("#radio5").prop("checked", true);
+        } else {
             $(".info").css({ 'border': '#3182bd solid 5px' })
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio1").prop("checked", true);
@@ -75,7 +79,13 @@ $(document).ready(function () {
                     d > 24 ? '#66c2a4' :
                         d > 21 ? '#99d8c9' :
                             '#ccece6';
-        }
+        } else if (mode == "minority") {
+            return d > 90 ? '#d94801' :
+                d > 70 ? '#f16913' :
+                    d > 50 ? '#fd8d3c' :
+                        d > 30 ? '#fdae6b' :
+                            '#fdd0a2';
+        } 
     }
 
     function style(feature) {
@@ -100,6 +110,15 @@ $(document).ready(function () {
         } else if (mode == "wealth") {
             return {
                 fillColor: getColor(feature.properties.IncomePerCapita.substring(1,3)),
+                weight: 2,
+                opacity: 1,
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        } else if (mode == "minority") {
+            return {
+                fillColor: getColor(feature.properties.MinorityPercentage),
                 weight: 2,
                 opacity: 1,
                 color: '#FFF',
@@ -181,6 +200,9 @@ $(document).ready(function () {
         } else if (mode == "wealth") {
             this._div.innerHTML = '<h4 style="font: 16px">Wealth</h4>' + (props ?
                 '<b style="color:#2ca25f">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#2ca25f">Income Per Capita:</b><b> ' + props.IncomePerCapita : '<b style="color:#2ca25f"> Hover/Click on a county </b>');
+        } else if (mode == "minority") {
+            this._div.innerHTML = '<h4 style="font: 16px">Minority Percentage</h4>' + (props ?
+                '<b style="color:#f16913">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#f16913">Percentage of Minorities:</b><b> ' + props.MinorityPercentage + '%' : '<b style="color:#f16913"> Hover/Click on a county </b>');
         }
         else {
             this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
@@ -230,6 +252,17 @@ $(document).ready(function () {
                     '<i style="background:' + getColor(grades[i].substring(1,3)) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
             }
+        } else if (mode == "minority") {
+            var grades = ["10%", "30%", "50%", "70%", "90%"],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                console.log(parseInt(grades[i].substring(0, grades[i].length - 1))+1)
+                this._div.innerHTML +=
+                    '<i style="background:' + getColor(parseInt(grades[i].substring(0,grades[i].length-1))+1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+            }
         }
     }
 
@@ -259,12 +292,41 @@ $(document).ready(function () {
                        m_nationalguard, m_mcdonough, m_epaoffice, m_douglasville,
                        m_kennesaw, m_athens, m_foodcenter, m_forestry]);
 
-    var overlayMaps = {
-        "Air Quality": airquality_markers
-    };
+    // Added Waste Management Markers to mark locations of Waste Management Facilities
+    var IncineratorIcon = L.icon({
+        iconUrl : "../static/img/waste.png",
+        iconSize: [32,32]
+    }); 
+                       
+    var i_roswell = L.marker([34.039528, -84.371626], {icon: IncineratorIcon }).bindPopup("Commercial Waste Incinerator Service"),
+        i_mcd = L.marker([33.897407, -84.28355], {icon: IncineratorIcon}).bindPopup("Mconnell Drum Incinerator Service"),
+        i_scp = L.marker([33.610734, -84.289186], {icon: IncineratorIcon}).bindPopup("SP Petroleum Incinerator Service"),
+        i_clean = L.marker([33.838181, -84.198162], {icon: IncineratorIcon}).bindPopup("Clean Harbors Incinerator Service"),
+        i_mcf = L.marker([33.636247, -84.310255], {icon: IncineratorIcon}).bindPopup("MCF Environmental Services Incinerator Service"),
+        i_usw = L.marker([34.084829, -84.295483], {icon: IncineratorIcon}).bindPopup("US Waste Services Incinerator Service"),
+        i_bfih = L.marker([33.662,-84.336], {icon: IncineratorIcon}).bindPopup("BFI Hickory Ridge"),
+        i_wmi = L.marker([33.93,-84.2378], {icon: IncineratorIcon}).bindPopup("WMI-BJ Landfill"),
+        i_sr = L.marker([33.44,-84.307], {icon: IncineratorIcon}).bindPopup("SR Lovejoy Landfill"),
+        i_bfir = L.marker([33.4878,-84.4406], {icon: IncineratorIcon}).bindPopup("BFI Roberts Road Landfill"),
+        i_utoy = L.marker([33.74188, -84.55357],{icon: IncineratorIcon}).bindPopup("Utoy Creek Water Landfill"),
+        i_rmclay = L.marker([33.82412,-84.45465],{icon: IncineratorIcon}).bindPopup("R.M. Clayton Water Landfill"),
+        i_rlsutt = L.marker([33.83175,-84.4605],{icon: IncineratorIcon}).bindPopup("R.L. Sutton Water"),
+        i_gate = L.marker([33.709620, -84.593499],{icon: IncineratorIcon}).bindPopup("Gateway Landfill"),
+        i_wel = L.marker([33.613188, -84.525786],{icon: IncineratorIcon}).bindPopup("Welcome All Landfill"),
+        i_safe = L.marker([33.549014, -84.617137],{icon: IncineratorIcon}).bindPopup("Safeguard Landfill"),
+        i_beth = L.marker([33.967361, -83.774736],{icon: IncineratorIcon}).bindPopup("Bethlehem Landfill"),
+        i_chambers = L.marker([33.8195,-84.4655], {icon: IncineratorIcon}).bindPopup("Chambers Bolton Landfill"); 
+    
+       
+    var wastemanage_markers = L.layerGroup([i_roswell,i_mcd,i_scp,i_clean,i_mcf,i_usw,
+                                            i_bfih,i_wmi,i_sr,i_bfir,i_utoy,i_rmclay,
+                                            i_rlsutt,i_chambers,i_gate,i_wel,i_beth,i_safe]);
+
     if (mode == "air") {
         airquality_markers.addTo(map);
     }
+
+    wastemanage_markers.addTo(map);
 
 
     
