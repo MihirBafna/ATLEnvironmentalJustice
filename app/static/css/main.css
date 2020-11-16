@@ -8,7 +8,14 @@ a:focus,
 a:hover {
   color: #fff;
 }
-
+  .imghr{
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+  }
+  .imghr:hover{
+      -webkit-transform: scale(1.05);
+              transform: scale(1.05);
+  }
 .link{
     text-decoration: underline;
 }

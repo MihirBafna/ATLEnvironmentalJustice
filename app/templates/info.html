@@ -5,26 +5,13 @@
 <link rel="stylesheet" href="../static/css/index.css">
 <style>
     body {
-        /*background-image: url("../static/img/AtlantaBackground.jpg");
+        background-image: url("../static/img/info.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed; */
+        background-attachment: fixed;
 
-        background-color: #323639;
-        /* overflow-y: scroll */
         
-    }
-    
-    h1.title {
-        font: 40px "Times New Roman";
-        font-weight: bold;
-    }
-
-    p.info-page {
-        font: 16px "Times New Roman";
-        text-align: left;
-        text-indent: 35px;
     }
 
 </style>
@@ -33,7 +20,7 @@
 
 {% block body %}
 <div class="background">
-    <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="container-fluid d-flex w-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto" style="z-index: 1;">
             <div class="inner">
                 <nav class="nav nav-masthead justify-content-center">
@@ -46,25 +33,147 @@
                 </nav>
             </div>
         </header>
-        <div class="container" style="border: #323639 0px solid; height: 80%;margin-bottom: 10%;">
-
-            <!-- Read File to place Resource Data-->
-            <div id="file-script" style="font-family: Helvetica Neue; padding:2%; text-align: left;">
-                <script src="../static/js/info.js"></script>
-                <script>parse_references("../static/txt/info.txt");</script>
-            </div>
-            <br>
-            <br>
-
-        </div>    
-    
     </div>
-    <footer class="footer mastfoot mt-auto">
+    <div id="fullPage">
+        <div class="section">
+            <div class="container-fluid" style="border: #323639 0px solid; margin-bottom: 10%;">
+                <div class="row animate__animated animate__fadeIn">
+                    <div class="col-1">
+                    
+                    </div>
+                    <div class="col-4" style="padding-top: 10vh; text-align: left; padding-left: 10vh;">
+                        <h1 class="cover-heading" style="font-size: 7vh;"><b><i class='fas'>&#xf46c;</i> What's <br/>Happening?</b></h1>
+                    </div>
+                    <div class="col-1">
+                    
+                    </div>
+                    <div class="col-5">
+                        <p style="font-size: 1.75vh; text-align: left;">
+                            Atlanta is home to more than a half million people; all of different racial and socioeconomic backgrounds. It should seem appropriate that everyone in the same geographical area in spite of their differences would have the same quality of water,
+                            air, and life. Unfortunately, this is not the case. Low-income and communities and communities of color are
+                            disproportionately affected by toxic pollution in the greater-Atlanta area. Environmental injustice is defined as the instance where a
+                            group is disproportionately exposed to toxic chemicals or environmental hazards due to their race or socioeconomic
+                            class. What we are witnessing in Atlanta, is exactly that.
+                            
+                        </p>
+                        <p style="font-size: 1.75vh; text-align: left;">
+                            In the US, many communities of color and low-income communities have had their quality of life affected by more and more
+                            landfills, truck depots, and incinerators being placed within their immediate environment. Studies have proved that in
+                            the south, of each 5 African Americans or hispanic residents 3 will be living in a community with one or more toxic
+                            waste sites. Another clear example of these disparities is the green index; is it coincidential that the states with the
+                            highest percentage of African-American residents score the lowest on the US green index? Even the programs aimed at
+                            creating a better environment for Americans like the SuperFund cleanup, has been shown to favor areas of white majority.
+                            These decisions and placements are not random. They are directly caused by the lack of laws that protect these
+                            vulnerable communities; they are unable to fight the big corporations that destroy their environments. Benjamin Chevis,
+                            who coined the term environmental racism, once said: “Environmental racism is racial discrimination in environmental
+                            policy-making and enforcement of regulations and laws, the deliberate targeting of communities of color for toxic waste
+                            facilities, the official sanctioning of the presense of life threatening poisons and pollutants in communities of color,
+                            and the history of excluding people of color &om leadership of the environmental movement”
+                        </p>
+                        <div id="start" style="margin-top: 3vh;font-weight: 100;" class="animate-flicker">
+                            <a style="font-size: 5vh; border: none; margin-top: 0; cursor: pointer;">
+                                <img src="../static/img/arrow.png" style="height: 7vh;">
+                            </a>
+                        
+                        </div>
+                    </div>
+                    <div class="col-1">
+                    
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container-fluid" style="border: #323639 0px solid; margin-bottom: 20%;">
+                <div class="row" style="font-size: 1.5vh; text-align: left;">
+
+                    <div class="col-1">
+                    </div>
+                    <div class="col-5" style="padding-top: 2vh;">
+                        <p>
+                                The air, water, and life quality of those vulnerable communities are directly affected by these environmental hazards.
+                            Neighborhoods near incinerators, waste sites, and large factories are more exposed to air pollution which is directly
+                            linked to asthma, cardiovascular disease, lung disease, and cancer. Studies have proved that non-Hispanic whites had the
+                            lowest exposure rates to polluted air. Meanwhile, Hispanics had a higher exposure rate, and African Americans had the
+                            highest exposure rates of all. Water supplies are also affected by surrounding hazards. Runoff from factories or waste sites can contaminate the water
+                            making it non suitable for drinking or cleaning. A famous example are the Navajo nation residents who are now forced to
+                            commute long hours on a dangerous road to get clean water after their water supply has been contaminated by uranium due
+                            to uranium mining in the area. Many other communities face similar problems; low income migrant farmers and their crops
+                            are suffering as well.
+                        </p>
+                                Many other life factors are affected by environmental injustice leading to a lower life quality. According to the CDC,
+                            children of color are 11.2 times more likely to suffer from lead poisoning by cheap lead based paints in their
+                            surroundings. Another example is the disproportionate exposure of black Americans to NO2, a pollutant that causes heart
+                            disease and premature death, by 37%. These exposures are due to unfair city planning that endangers some residents as
+                            well as policies that fail to protect them. All these factors are directly impacting the health of colored and poor
+                            communities.
+                        </p>
+                        <p>
+                                The greater-Atlanta area, like many other regions in the US, is suffering from environmental injustice. The majority of
+                            occupants in the inner city and away from the suburbs are low-income families or families of color which means that they
+                            are affected most by air and water pollution. A study of the main counties within Atlanta showed that non-whites occupy
+                            only 25.4% of low pollution blocks and a staggering 44.2% of high pollution blocks. This is not a minor problem,
+                            specially since the majority of Atlanta residents are Africa-Americans. One of the biggest pollution hotspots lies within 1.5 miles of Fulton Industrial Boulevard near the intersection of
+                            Cobb, Douglas, and Fulton (some of the busiest counties). This area is also part of the Chattahoochee River which is
+                            main drinking water source for Atlanta, so any pollution or toxic runoff is also affecting the river. 20% of the
+                            residents withing those 1.5 miles are under the federal poverty line and 80% of them are of color. This area has 19
+                            different air pollutant sources and is under 27 environmental violations. Many other areas in Metropolitan Atlanta face
+                            similar fates. The richer and less diverse the area is, the safer it gets environmentally.
+                        </p>
+
+                            In hopes of highlighting this environmental injustice in Atlanta, we have created a map with all counties within
+                            Metropolitan Atlanta each annotated with its air quality, water quality, and environmental hazards against it’s income
+                            and race.
+                        </p>
+                        <center>
+                            <a href="/map" class="btn btn-lg btn-secondary" style="font-size: 2vh; font-weight: 100;">View Our Map</a>
+                        </center>
+
+                    </div>
+                    <div class="col-5">
+                        <div id="up" style="margin-bottom: 3vh;font-weight: 100; text-align: center;" class="animate-flicker">
+                            <a style="font-size: 5vh; border: none; margin-top: 0;">
+                                <img src="../static/img/arrow.png" style="height: 7vh; transform: rotate(180deg);">
+                            </a>
+                        </div>
+                        <a href="https://www.ajc.com/news/atlanta-news/in-south-dekalb-black-neighborhoods-fight-environmental-racism/SCJUPP3HQVAJ3B5VNYJ3GEJ6FA/"
+                            target="_blank">
+                            <img class="imghr"src="../static/img/atlinjust.jpg"
+                                style="height: 30vh;border-radius: 10px; border: white solid 1px; opacity: 0.7; margin-left: 20vh;">
+                        </a>
+                    </div>
+                    <div class="col-1">
+            
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <!-- <footer class="footer mastfoot mt-auto">
         <div class=" inner">
             <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a
                     href="https://github.com/brettpietruszka">Brett Pietruszka</a> </p>
         </div>
-    </footer>
+    </footer> -->
 </div>
-
+<script>
+        new fullpage("#fullPage", {
+                autoScrolling: true,
+                navigation: true,
+                navigationPosition: 'left',
+                bigSectionsDestination: top,
+                // css3: false,
+                navigationTooltips: ['Page 1', 'Page 2']
+            })
+        $(document).on('click', '#start', function () {
+            fullpage_api.moveSectionDown();
+        });
+        $(document).on('click', '#up', function () {
+            fullpage_api.moveSectionUp();
+        });
+</script>
 {% endblock %}
