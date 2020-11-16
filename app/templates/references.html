@@ -15,7 +15,7 @@
     }
     body {
         background-color: #323639;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
         /*
         background-image: url("../static/img/AtlantaBackground.jpg");
         background-size: cover;
@@ -32,9 +32,9 @@
 <div class="background">
     <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto" style="z-index: 1;">
-        <header class="masthead mb-auto" style="z-index: 1;">
             <div class="inner">
                 <nav class="nav nav-masthead justify-content-center">
+                    <h3 style="font-weight:100;margin-top: 0; font-size: 3vh; position: absolute; left: 3%;">References:</h3> 
                     <a class="nav-link" href="/" id="homeicon"><i class='fas' style="font-size:2.5vh">&#xf015;</i></a>
                     <a class="nav-link" href="/info" id="infoicon"><i class='fas' style="font-size:2.5vh">&#xf46c;</i></a>
                     <a class="nav-link" href="/map" id="mapicon"><i class='fas fa-globe-americas'
@@ -44,31 +44,18 @@
                 </nav>
             </div>
         </header>
-        </header>
-        <div class="container" style="border: #323639 0px solid; height: 80%; margin-top: 5%; margin-bottom: 5%;">
-            
-            <!-- Please get this "test" class to work. Why it no scroll? :( -->
-            <div class="test">
-                <p class ="title">Works Cited</p>
-
-                <!-- Read File to place Resource Data-->
-                <div id="file-script">
-                    <script src="../static/js/references.js"></script>
-                    <script>parse_references("../static/txt/references.txt");</script>
-                </div>
-                <br><br>
-            </div>
-            
+        <div class="container-fluid" style="border: #323639 0px solid; height: 100%; margin-bottom: 5vh;">
+            <iframe src="../static/img/workscited.pdf" style="height: 80vh; width:50vw;"></iframe>
             
         </div>
     </div>
-
+<!-- 
     <footer class="footer mastfoot mt-auto">
         <div class=" inner">
             <p>Created by <a href="https://github.com/MihirBafna">Mihir Bafna</a> | <a
                     href="https://github.com/brettpietruszka">Brett Pietruszka</a> </p>
         </div>
-    </footer>
+    </footer> -->
 </div>
 
 {% endblock %}

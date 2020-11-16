@@ -74,7 +74,6 @@
                 <div class="container-fluid d-flex w-100 p-3 mx-auto flex-column">
                 <div class="row justify-content-center">
                     <div class="col-10" >
-                        <!-- <hr style="height: 0px; width: 20%; margin-top: 0;"> -->
                         </hr>
                         <div style="height: 100vh; margin-left: 2%; margin-right: 1%; padding-bottom: 10vh;">
                             <div id="mapid"></div>
@@ -82,58 +81,66 @@
                         </div>
                     </div>
                     <div class="col-2 justify-content-center">
-                        <h4 style="font-weight: 100; margin-top: 1%;">Modes:</h4>
-                        <hr style="height: 0px; width: 40%; margin-top: 0px;" />
+                        <h4 style="font-weight: 100; margin-top: 1%;font-size: 2.5vh;">Modes:</h4>
+                        <hr style="height: 0px; width: 40%; margin-top: 0; margin-bottom: 5px;">
                         <div id="panel2 justify-content-center"
-                            style="height: auto; align-items: center;text-align: left; margin-left: 30%; ">
+                            style="height: auto; align-items: center;text-align: left; margin-left: 30%; font-size: 2vh; ">
                             <div class="form-check">
                                 <input onclick="location.href = '/map/default'" class="form-check-input" type="radio"
-                                    name="exampleRadios" id="radio1" value="option1">
-                                <label class="form-check-label" for="radio1">
+                                    name="exampleRadios" id="radio1" value="option1" style="height: 2vh;">
+                                <label class="form-check-label" for="radio1" style="font-size: 1.75vh; font-weight: 100;">
                                     Default
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input onclick="location.href = '/map/water'" class="form-check-input" type="radio" name="exampleRadios"
-                                    id="radio2" value="option2">
-                                <label class="form-check-label" for="radio2">
+                                    id="radio2" value="option2"  style="height: 2vh;">
+                                <label class="form-check-label" for="radio2" style="font-size: 1.75vh; font-weight: 100;">
                                     Water Quality
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input onclick="location.href = '/map/air'" class="form-check-input" type="radio" name="exampleRadios"
-                                    id="radio3" value="option3">
-                                <label class="form-check-label" for="radio3">
+                                    id="radio3" value="option3"  style="height: 2vh;">
+                                <label class="form-check-label" for="radio3" style="font-size: 1.75vh; font-weight: 100;">
                                     Air Quality
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input onclick="location.href = '/map/wealth'" class="form-check-input" type="radio"
-                                    name="exampleRadios" id="radio4" value="option4">
-                                <label class="form-check-label" for="radio4">
+                                    name="exampleRadios" id="radio4" value="option4"  style="height: 2vh;">
+                                <label class="form-check-label" for="radio4" style="font-size: 1.75vh; font-weight: 100;">
                                     Wealth
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input onclick="location.href = '/map/minority'" class="form-check-input" type="radio" name="exampleRadios" id="radio5"
-                                    value="option5">
-                                <label class="form-check-label" for="radio5">
-                                    Minority %
+                                    value="option5" style="height: 2vh;">
+                                <label class="form-check-label" for="radio5" style="font-size: 1.75vh; font-weight: 100;">
+                                    Race
                                 </label>
                             </div>
-                            <div class="form-check">
+                            <!-- <div class="form-check">
                                 <input onclick="location.href = '/map/race'" class="form-check-input" type="radio" name="exampleRadios"
-                                    id="radio6" value="option6">
-                                <label class="form-check-label" for="radio6">
+                                    id="radio6" value="option6"  style="height: 2vh;">
+                                <label class="form-check-label" for="radio6" style="font-size: 1.75vh; font-weight: 100;">
                                     Race/Ethnicity
                                 </label>
-                            </div>
+                            </div> -->
                         </div>
-                        <div style="padding-top: 30vh;">
-                            <p class="lead">
-                                <a id="mean" class="btn btn-lg blank btn-secondary" style="font-size: 2vh;">What does this data mean?</a>
-                                <a id="start" class="btn btn-lg blank btn-secondary" style="font-size: 2vh;">View Data Analytics</a>
+                        <hr style="height: 0px; width: 40%; margin-top: 5px;margin-bottom: 5vh;">
+                        <div id="infodiv" style="padding-top: 10px; padding-left: 5px; padding-right: 5px;border-radius: 10px; ">
+                            <h3 style="font-weight: 100;font-size: 2vh; margin: 0;">Disclaimer</h3>
+                            <p id="info" style="font-size: 1.25vh;font-weight: 100;">
+
                             </p>
+                        </div>
+                        <div id="start" style="margin-top: 25vh;font-weight: 100;" class="animate-flicker">
+                            <h3 style="font-weight: 100;margin-bottom: 0; font-size: 2vh;">Scroll for Data Analysis</h3>
+                            <a  style="font-size: 2vh; border: none; margin-top: 0;">
+                                <img src="../static/img/arrow.png" style="height: 5vh;" >
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -142,49 +149,58 @@
         <div class="section s2" style="padding-left: 50px;">
             <div class="container-fluid d-flex w-100 p-3 mx-auto flex-column">
             <div class="row justify-content-center">
-                <div class="col-2">
-                    <div >
-                        <button id="wealth-water" class="btn btn-sm btn-secondary blank" style="margin-top: 1vh;width: 170px;" >Wealth vs Water Quality</button>
-                        <br/>
-                        <button id="race-water" class="btn btn-sm btn-secondary blank" style="margin-top: 1vh;width: 170px;">Race vs Water Quality</button>
-                        <br />
-                        <button id="wealth-air" class="btn btn-sm btn-secondary blank" style="margin-top: 1vh;width: 170px;">Wealth vs Air Quality</button>
-                        <br />
-                        <button id="race-air" class="btn btn-sm btn-secondary blank" style="margin-top: 1vh; width: 170px;">Race vs Air Quality</button>
+                <div class="col-1">
+                    <div>
+                        <button id="atlenvjustice" class="btn btn-sm btn-secondary blank"
+                            style="margin-top: 1vh; width: 12vh;font-size: 1.5vh;">ATLEnvJustice <br/> Index
+                        <button id="wealth-water" class="btn btn-sm btn-secondary blank"
+                            style="margin-top: 1vh; width: 12vh;font-size: 1.5vh;">Wealth
+                            vs <br/>Water Quality</button>
+                        <button id="race-air" class="btn btn-sm btn-secondary blank" style="margin-top: 1vh;width: 12vh;font-size: 1.5vh;">Race
+                            vs<br /> Air
+                            Quality</button>
+                        <button id="race-water" class="btn btn-sm btn-secondary blank"
+                            style="margin-top: 1vh;width: 12vh;font-size: 1.5vh;">Race vs<br />
+                            Water Quality</button>
+                        <button id="wealth-air" class="btn btn-sm btn-secondary blank"
+                            style="margin-top: 1vh;width: 12vh;font-size: 1.5vh;">Wealth vs<br />
+                            Air Quality</button>
+
                     </div>
                 </div>
                 <div class = "col-5 justify-content-center" style="margin-top: 0; padding-top: 0;">
                     <!-- For the Chart Section for now -->
-                    <div style="height: 100vh; width: 100vh; ">
+                    <div style="height:100vh; width: 100vh;">
                         <canvas id="dataGraph" height="800" width="800" style="border:solid 0px; background-color: rgba(52, 51, 50, 1); border-radius: 15px; height: 80vh;"></canvas>
                     </div>
-  
                     <script src="https://cdnjs.cloudfare.com/ajax/libs/Chart/2.8.0/Chart.min.js"></script>
                     <script src="../static/js/atlantacounties.js"></script>
                     <script src="../static/js/graph.js"></script>
-                </div>
-                <div class="col-5" style="padding-left: 50px;">
+                </div> 
+                <div class="col-6" style="padding-left: 8%;">
                     <h1 style="font-weight: 100; margin-top: 0; font-size: 3vh;">Analysis</h1>
-                    <p class="analysis" style="font-size: 2vh;">The data presented on the map and in the chart display an interesting
-                        relationship between certain socioeconomic factors and environmentaly quality.
-                        It can be seen from the data displayed in the graph that wealth is negatively
-                        correlated with both th water and air quality statistics, and minority percentage is
-                        positively correlated with water and air quality statistics, which is indicated by
-                        the negative and positive slopes of the corresponding regression lines respectively.
+                    <p class="analysis" style="font-size: 2vh;">From the ATLEnvJustice graph, we developed our own index to rank the counties: the top right represent the most privileged (best environment / socioeconomic qualities) bottom left represent the most environmentally injust and disadvantaged (worst environment / socioeconomic qualities).
+                    </p>
+                    <p class="analysis" style="font-size: 2vh;">Overall, the data presented on the map and chart display an interesting
+                        relationship between socioeconomic factors and environmental quality.
+                        Wealth is negatively
+                        correlated with both water and air quality, and minority percentage is
+                        positively correlated with water and air quality, which is indicated by
+                        the negative and positive slopes of the respective regression lines.
                     </p>
                     <p class="analysis" style="font-size: 2vh;">
-                        From this, we can conclude that poorer counties (counties with lower GDP Per Capita)
+                        From this, we can conclude that poorer counties (counties with lower GDP and Income Per Capita)
                         tend to have worse air quality and water quality then richer counties. Likewise,
-                        counties with populations that consist of a higher percentage of minorities also tend
+                        counties with populations that consist of a higher percentage of minorities tend
                         to have worse air and water quality.
                     </p>
                     <p class="analysis" style="font-size: 2vh;">
-                        This exposes a deep problem in Atlanta's society. Poorer people and minorites are being unfairly
+                        This exposes a deep problem in Atlanta's society. Poorer people, mainly minorites, are being unfairly
                         mistreated. They have no control over the air and water quality in their areas.
                         They are not the ones realeasing carbon dioxide pollutants into the air. They are not
                         the ones dumping contaminants into the nearby water. No, it's the richer, whiter
-                        corporations and businesses in their area doing these acts, and the poorer, less-white
-                        populations are suffering more because of it. Something must be done about this problem, and,
+                        corporations and businesses in their area responsible, and the poorer, less-white
+                        populations are suffering because of it. Something must be done about this problem, and,
                         as it turns out, something is starting to be done. There are already many groups advocating for change in policy
                         to combat these effects. Click the link below to learn more about how you can make a difference!
                     </p>
@@ -235,6 +251,22 @@
     $(document).on('click', '#start', function () {
         fullpage_api.moveSectionDown();
     });
+    // tippy('#wealth-water', {
+    //         content: "Wealth vs. Water Quality",
+    //         placement:"right",
+    // });
+    // tippy('#wealth-air', {
+    //     content: "Wealth vs. Air Quality",
+    //     placement: "right",
+    // });
+    // tippy('#race-water', {
+    //         content: "Race vs. Water Quality",
+    //         placement: "right",
+    // });
+    // tippy('#race-air', {
+    //         content: "Race vs. Air Quality",
+    //         placement: "right",
+    // });
 </script>
 <script src="../static/js/atlantacounties.js"></script>
 <script src="../static/js/map.js"></script>

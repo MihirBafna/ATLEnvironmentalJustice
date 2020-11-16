@@ -1,4 +1,14 @@
-
+new fullpage("#fullPage", {
+    autoScrolling: true,
+    navigation: true,
+    navigationPosition: 'left',
+    bigSectionsDestination: top,
+    // css3: false,
+    navigationTooltips: ['What To Do?', 'Government', 'Organizations', 'Social Media' ]
+})
+$(document).on('click', '#start', function () {
+    fullpage_api.moveSectionDown();
+});
 function contentToHtml(text) {
     return text
     .split('\n\n')
