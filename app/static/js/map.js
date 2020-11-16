@@ -281,7 +281,7 @@ $(document).ready(function () {
     
     // Added Cloud Markers to mark locations of Air Quality Testing Locations
     var AirQualityIcon = L.icon({
-        iconUrl : "../static/img/air_cloud.png",
+        iconUrl : "../static/img/cloud.svg",
         iconSize: [32,32]
     }); 
 
@@ -303,9 +303,17 @@ $(document).ready(function () {
                        m_kennesaw, m_athens, m_foodcenter, m_forestry]);
 
     // Added Waste Management Markers to mark locations of Waste Management Facilities
-    var IncineratorIcon = L.icon({
-        iconUrl : "../static/img/waste.png",
+    var WasteIcon = L.icon({
+        iconUrl : "../static/img/trash1.svg",
         iconSize: [32,32]
+    }); 
+    var IncineratorIcon = L.icon({
+        iconUrl: "../static/img/fire.svg",
+        iconSize: [32, 32]
+    }); 
+    var WaterIcon = L.icon({
+        iconUrl: "../static/img/water.svg",
+        iconSize: [32, 32]
     }); 
                        
     var i_roswell = L.marker([34.039528, -84.371626], {icon: IncineratorIcon }).bindPopup("Commercial Waste Incinerator Service"),
@@ -315,28 +323,48 @@ $(document).ready(function () {
         i_mcf = L.marker([33.636247, -84.310255], {icon: IncineratorIcon}).bindPopup("MCF Environmental Services Incinerator Service"),
         i_usw = L.marker([34.084829, -84.295483], {icon: IncineratorIcon}).bindPopup("US Waste Services Incinerator Service"),
         i_bfih = L.marker([33.662,-84.336], {icon: IncineratorIcon}).bindPopup("BFI Hickory Ridge"),
-        i_wmi = L.marker([33.93,-84.2378], {icon: IncineratorIcon}).bindPopup("WMI-BJ Landfill"),
-        i_sr = L.marker([33.44,-84.307], {icon: IncineratorIcon}).bindPopup("SR Lovejoy Landfill"),
-        i_bfir = L.marker([33.4878,-84.4406], {icon: IncineratorIcon}).bindPopup("BFI Roberts Road Landfill"),
-        i_utoy = L.marker([33.74188, -84.55357],{icon: IncineratorIcon}).bindPopup("Utoy Creek Water Landfill"),
-        i_rmclay = L.marker([33.82412,-84.45465],{icon: IncineratorIcon}).bindPopup("R.M. Clayton Water Landfill"),
-        i_rlsutt = L.marker([33.83175,-84.4605],{icon: IncineratorIcon}).bindPopup("R.L. Sutton Water"),
-        i_gate = L.marker([33.709620, -84.593499],{icon: IncineratorIcon}).bindPopup("Gateway Landfill"),
-        i_wel = L.marker([33.613188, -84.525786],{icon: IncineratorIcon}).bindPopup("Welcome All Landfill"),
-        i_safe = L.marker([33.549014, -84.617137],{icon: IncineratorIcon}).bindPopup("Safeguard Landfill"),
-        i_beth = L.marker([33.967361, -83.774736],{icon: IncineratorIcon}).bindPopup("Bethlehem Landfill"),
-        i_chambers = L.marker([33.8195,-84.4655], {icon: IncineratorIcon}).bindPopup("Chambers Bolton Landfill"); 
+        i_wmi = L.marker([33.93,-84.2378], {icon: WasteIcon}).bindPopup("WMI-BJ Landfill"),
+        i_sr = L.marker([33.44,-84.307], {icon: WasteIcon}).bindPopup("SR Lovejoy Landfill"),
+        i_bfir = L.marker([33.4878,-84.4406], {icon: WasteIcon}).bindPopup("BFI Roberts Road Landfill"),
+        i_utoy = L.marker([33.74188, -84.55357],{icon: WaterIcon}).bindPopup("Utoy Creek Water Landfill"),
+        i_rmclay = L.marker([33.82412,-84.45465],{icon: WaterIcon}).bindPopup("R.M. Clayton Water Landfill"),
+        i_rlsutt = L.marker([33.83175,-84.4605],{icon: WaterIcon}).bindPopup("R.L. Sutton Water"),
+        i_gate = L.marker([33.709620, -84.593499],{icon: WasteIcon}).bindPopup("Gateway Landfill"),
+        i_wel = L.marker([33.613188, -84.525786],{icon: WasteIcon}).bindPopup("Welcome All Landfill"),
+        i_safe = L.marker([33.549014, -84.617137],{icon: WasteIcon}).bindPopup("Safeguard Landfill"),
+        i_beth = L.marker([33.967361, -83.774736],{icon: WasteIcon}).bindPopup("Bethlehem Landfill"),
+        i_chambers = L.marker([33.8195,-84.4655], {icon: WasteIcon}).bindPopup("Chambers Bolton Landfill"); 
     
        
-    var wastemanage_markers = L.layerGroup([i_roswell,i_mcd,i_scp,i_clean,i_mcf,i_usw,
-                                            i_bfih,i_wmi,i_sr,i_bfir,i_utoy,i_rmclay,
-                                            i_rlsutt,i_chambers,i_gate,i_wel,i_beth,i_safe]);
+    var incinerator_markers = L.layerGroup([i_roswell,i_mcd,i_scp,i_clean,i_mcf,i_usw,
+                                            i_bfih]);
+    var wastemanage_markers = L.layerGroup([ i_wmi, i_sr, i_bfir,
+        i_chambers, i_gate, i_wel, i_beth, i_safe]);
+    var watermanage_markers = L.layerGroup([i_utoy,i_rmclay,i_rlsutt]);
 
-    if (mode == "air") {
-        airquality_markers.addTo(map);
-    }
+    $('input[type="checkbox"]').click(function () {
+        if ($("#check1").prop("checked") == true) {
+            airquality_markers.addTo(map);
+        } else {
+            map.removeLayer(airquality_markers);
+        }
+        if ($("#check2").prop("checked") == true) {
+            wastemanage_markers.addTo(map);
+        } else {
+            map.removeLayer(wastemanage_markers);
+        }
+        if ($("#check3").prop("checked") == true) {
+            incinerator_markers.addTo(map);
+        } else {
+            map.removeLayer(incinerator_markers);
+        }
+        if ($("#check4").prop("checked") == true) {
+            watermanage_markers.addTo(map);
+        } else {
+            map.removeLayer(watermanage_markers);
+        }
+    });
 
-    wastemanage_markers.addTo(map);
 
 
     

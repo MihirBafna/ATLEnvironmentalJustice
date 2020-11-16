@@ -128,14 +128,45 @@
                                 </label>
                             </div> -->
                         </div>
-                        <hr style="height: 0px; width: 40%; margin-top: 5px;margin-bottom: 5vh;">
-                        <div id="infodiv" style="padding-top: 10px; padding-left: 5px; padding-right: 5px;border-radius: 10px; ">
+                        <div style="padding-top: 3vh; margin-bottom: 3vh;">
+                            <h4 style="font-weight: 100;font-size: 2.5vh;">Toggle: <a id="attr"><i class='fas fa-info-circle'></i></a></h4>
+                            <hr style="height: 0px; width: 40%; margin-top: 0; margin-bottom: 5px;">
+                            <div class="checkboxes" style="text-align: left; margin-left: 30%">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="check1">
+                                    <label class="form-check-label" for="defaultCheck1" style="font-size: 1.75vh; font-weight: 100;">
+                                        Air Measurements
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="check2">
+                                    <label class="form-check-label" for="defaultCheck2" style="font-size: 1.75vh; font-weight: 100;">
+                                        Landfills
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="check3">
+                                    <label class="form-check-label" for="defaultCheck3" style="font-size: 1.75vh; font-weight: 100;">
+                                        Incinerators
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="check4">
+                                    <label class="form-check-label" for="defaultCheck4" style="font-size: 1.75vh; font-weight: 100;">
+                                        Water Disposal
+                                    </label>
+                                </div>
+                                <!-- <div style="font-size: 1vh;">Toggle Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+                                        href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+                            </div>
+                        </div>
+                        <div id="infodiv" style="padding-top: 2vh; padding-left: 2vh; padding-right: 2vh;border-radius: 10px; ">
                             <h3 style="font-weight: 100;font-size: 2vh; margin: 0;">Disclaimer</h3>
                             <p id="info" style="font-size: 1.25vh;font-weight: 100;">
 
                             </p>
                         </div>
-                        <div id="start" style="margin-top: 25vh;font-weight: 100;" class="animate-flicker">
+                        <div id="start" style="margin-top: 7.5vh;font-weight: 100;" class="animate-flicker">
                             <h3 style="font-weight: 100;margin-bottom: 0; font-size: 2vh;">Scroll for Data Analysis</h3>
                             <a  style="font-size: 2vh; border: none; margin-top: 0;">
                                 <img src="../static/img/arrow.png" style="height: 5vh;" >
@@ -251,6 +282,9 @@
     $(document).on('click', '#start', function () {
         fullpage_api.moveSectionDown();
     });
+    tippy("#attr",{
+        content: "Toggle icons made by FreePik"
+    })
     // tippy('#wealth-water', {
     //         content: "Wealth vs. Water Quality",
     //         placement:"right",
