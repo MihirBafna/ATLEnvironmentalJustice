@@ -412,7 +412,7 @@ for (var i = 0; i < 20; i++) {
     var env = (parseInt(parseInt(data.features[i].properties.AirQuality)- Math.min.apply(Math,airqualities))/(Math.max.apply(Math,airqualities)-Math.min.apply(Math,airqualities))+ (data.features[i].properties.Contaminants-Math.min.apply(Math,waterqualities))/(Math.max.apply(Math,waterqualities)-Math.min.apply(Math,waterqualities)))/2;
     var soc = (parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)) - Math.min.apply(Math, monies)) / (Math.max.apply(Math, monies) - Math.min.apply(Math, monies));
     sc = Math.round((soc + Number.EPSILON) * 100) / 100;
-    indexdata.data.push({ x: env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
+    indexdata.data.push({ x: 1-env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
 }
 console.log(indexdata)
 
@@ -420,8 +420,8 @@ var indexconfig = {
     type: "scatter",
     data: {
         datasets: [indexdata],
-        pointRadius: 7,
-        pointHoverRadius: 8,
+        radius: 7,
+        hoverRadius: 8,
     },
 
     options: {
@@ -473,7 +473,9 @@ var indexconfig = {
 }
 
 Chart.defaults.global.defaultFontColor = 'white';
-Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontSize = 16; 
+Chart.defaults.global.elements.point.radius = 5;
+Chart.defaults.global.elements.point.hoverRadius = 7;
 
 
 var graph = new Chart(GRAPH, indexconfig);
