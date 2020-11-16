@@ -6,7 +6,7 @@ const RA_COLOR = "rgba(255, 54, 174,1)";
 const GRAPH = document.getElementById("dataGraph");
 
 const wealth_wat = {
-    label: 'Wealth - Water',
+    label: 'Counties',
     backgroundColor: WW_COLOR,
     fill: false,
     data: [{x: data.features[8].properties.IncomePerCapita.substring(1,3)
@@ -73,7 +73,7 @@ const wealth_wat = {
 };
 
 const race_wat = {
-    label: 'Race - Water',
+    label: 'Counties',
     fill: false,
     backgroundColor: RW_COLOR,
     data: [{x: data.features[8].properties.MinorityPercentage,
@@ -120,7 +120,7 @@ const race_wat = {
 };
 
 const wealth_air = {
-    label: 'Wealth - Air',
+    label: 'Counties',
     fill: false,
     backgroundColor: WA_COLOR,
     data: [{x: data.features[8].properties.IncomePerCapita.substring(1,3)
@@ -188,7 +188,7 @@ const wealth_air = {
 };
 
 const race_air = {
-    label: 'Race - Air',
+    label: 'Counties',
     fill: false,
     backgroundColor: RA_COLOR,
     data: [{x: data.features[8].properties.MinorityPercentage,
@@ -236,7 +236,7 @@ const race_air = {
 
 // Wealth Water Regression
 var wwReg = {
-    label: "Wealth vs Water Regression",
+    label: "",
     showLine: true,
     fill: false, 
     backgroundColor: "rgb(0,0,0,0)",
@@ -246,7 +246,7 @@ var wwReg = {
 };
 
 var rwReg = {
-    label: "Race vs Water Regression",
+    label: "",
     showLine: true,
     fill: false, 
     backgroundColor: "rgb(0,0,0,0)",
@@ -256,7 +256,7 @@ var rwReg = {
 };
 
 var waReg = {
-    label: "Wealth vs Air Regression",
+    label: "",
     showLine: true,
     fill: false, 
     backgroundColor: "rgb(0,0,0,0)",
@@ -266,7 +266,7 @@ var waReg = {
 };
 
 var raReg = {
-    label: "Race vs Air Regression",
+    label: "",
     showLine: true,
     fill: false, 
     backgroundColor: "rgb(0,0,0,0)",
@@ -453,7 +453,8 @@ var indexconfig = {
                     labelString: 'Environmental Factors',
                 },
                 ticks: {
-
+                    min:0,
+                    max:1.0,
                 },
             }],
             yAxes: [{
@@ -462,7 +463,8 @@ var indexconfig = {
                     labelString: 'Socioeconomic Factors',
                 },
                 ticks: {
-
+                    min: 0,
+                    max: 1.0,
                 },
             }]
         }
@@ -477,10 +479,10 @@ Chart.defaults.global.defaultFontSize = 16;
 var graph = new Chart(GRAPH, indexconfig);
 document.getElementById('atlenvjustice').addEventListener('click', function () {
     graph.destroy();
-    indexconfig.options.scales.yAxes[0].ticks.min = 0;
-    indexconfig.options.scales.yAxes[0].ticks.max = 1.1;
-    indexconfig.options.scales.xAxes[0].ticks.min = 0;
-    indexconfig.options.scales.xAxes[0].ticks.max = 1.1;
+    // indexconfig.options.scales.yAxes[0].ticks.min = 0;
+    // indexconfig.options.scales.yAxes[0].ticks.max = 1.0;
+    // indexconfig.options.scales.xAxes[0].ticks.min = 0;
+    // indexconfig.options.scales.xAxes[0].ticks.max = 1.0;
     graph = new Chart(GRAPH, indexconfig);
 });
 

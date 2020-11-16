@@ -31,7 +31,7 @@ a:hover {
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
   border: .05rem solid #fff;
-  font-weight: 200;
+  /* font-weight: 200; */
 }
 
 
@@ -73,6 +73,34 @@ a:hover {
     animation: flickerAnimation 1.5s infinite;
 }
 
+.list-group-item{
+  background-color: rgba(0,0,0,0);
+  border: white 1px solid;
+  width: 60%;
+  font-size: 2vh;
+  color: white;
+  text-decoration-color: white;
+  text-shadow: none;
+}
+.list-group-item.active{
+  background-color:  rgb(24, 190, 255);
+}
+.list-group-item:hover{
+  background-color:  white;
+  text-decoration:none;
+}
+.carousel .item {
+  height: 300px;
+}
+.card{
+  background-color: rgba(32, 42, 50,0.5)!important;
+}
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;
