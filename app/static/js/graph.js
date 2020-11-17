@@ -276,8 +276,6 @@ var raReg = {
 };
 
 
-
-
 var tempList = [wealth_wat,race_wat,wealth_air,race_air];
 var outputList = [wwReg,rwReg,waReg,raReg];
 for (let index = 0; index < tempList.length; index++) {
@@ -408,14 +406,15 @@ for(var i=0;i<20;i++){
     monies.push(parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)));
 }
 // console.log(Math.min(airqualities),Math.max(air))
+var reglist = []
 for (var i = 0; i < 20; i++) {
     var env = (parseInt(parseInt(data.features[i].properties.AirQuality)- Math.min.apply(Math,airqualities))/(Math.max.apply(Math,airqualities)-Math.min.apply(Math,airqualities))+ (data.features[i].properties.Contaminants-Math.min.apply(Math,waterqualities))/(Math.max.apply(Math,waterqualities)-Math.min.apply(Math,waterqualities)))/2;
     var soc = (parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)) - Math.min.apply(Math, monies)) / (Math.max.apply(Math, monies) - Math.min.apply(Math, monies));
     sc = Math.round((soc + Number.EPSILON) * 100) / 100;
     indexdata.data.push({ x: 1-env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
+    var list = [1 - env.toFixed(2), sc.toFixed(2)];
+    reglist.push(list);
 }
-console.log(indexdata)
-
 var indexconfig = {
     type: "scatter",
     data: {
@@ -472,6 +471,29 @@ var indexconfig = {
 
 }
 
+
+
+const indexRegression = regression.linear(
+    reglist
+);
+const points = indexRegression.points.map(([x, y]) => {
+    return y;
+    // or {x, y}, depending on whether you just want y-coords for a 'linear' plot
+    // or x&y for a 'scatterplot'
+})
+console.log(reglist);
+console.log(points);
+var indexreg = {
+    label: "",
+    showLine: true,
+    fill: false,
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: RA_COLOR,
+    data: points,
+};
+
+
 Chart.defaults.global.defaultFontColor = 'white';
 Chart.defaults.global.defaultFontSize = 16; 
 Chart.defaults.global.elements.point.radius = 5;
@@ -481,10 +503,7 @@ Chart.defaults.global.elements.point.hoverRadius = 7;
 var graph = new Chart(GRAPH, indexconfig);
 document.getElementById('atlenvjustice').addEventListener('click', function () {
     graph.destroy();
-    // indexconfig.options.scales.yAxes[0].ticks.min = 0;
-    // indexconfig.options.scales.yAxes[0].ticks.max = 1.0;
-    // indexconfig.options.scales.xAxes[0].ticks.min = 0;
-    // indexconfig.options.scales.xAxes[0].ticks.max = 1.0;
+    // indexconfig.data.datasets.push(indexreg);
     graph = new Chart(GRAPH, indexconfig);
 });
 

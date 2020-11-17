@@ -66,7 +66,7 @@ $(document).ready(function () {
             $(".legend").css({ 'border': '#3182bd solid 5px' })
             $("#radio1").prop("checked", true);
             $("#info").text("")
-            $("#infodiv").css({ 'border': '#f16913 solid 5px', 'color': '#f16913' });
+            $("#infodiv").css({ 'border': 'white solid 5px', 'color': 'white' });
         }
     }
 
