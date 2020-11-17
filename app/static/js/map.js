@@ -62,11 +62,11 @@ $(document).ready(function () {
             $("#info").text("The racial demographic statistic is based off of the percentage of minorities in the region. The higher the number (darker the shade), the higher % minorities there are.")
             $("#infodiv").css({ 'border': '#f16913 solid 5px', 'color': '#f16913' });
         } else {
-            $(".info").css({ 'border': '#3182bd solid 5px' })
-            $(".legend").css({ 'border': '#3182bd solid 5px' })
+            $(".info").css({ 'border': '#cb181d solid 5px' })
+            $(".legend").css({ 'border': '#cb181d solid 5px' })
             $("#radio1").prop("checked", true);
-            $("#info").text("")
-            $("#infodiv").css({ 'border': 'white solid 5px', 'color': 'white' });
+            $("#info").text("This mode is ranked based off our own injustice index that compares environmental factors with socioeconomic factors. To learn more, scroll down.")
+            $("#infodiv").css({ 'border': '#ef3b2c solid 5px', 'color': '#ef3b2c' });
         }
     }
 
@@ -95,7 +95,13 @@ $(document).ready(function () {
                     d > 50 ? '#fd8d3c' :
                         d > 30 ? '#fdae6b' :
                             '#fdd0a2';
-        } 
+        }  else {
+            return d > 18 ? '#fcbba1' :
+                d > 14 ? '#fc9272' :
+                    d > 7 ? '#fb6a4a' :
+                        d > 2 ? '#ef3b2c' :
+                            '#99000d';
+        }
     }
 
     function style(feature) {
@@ -137,11 +143,12 @@ $(document).ready(function () {
             };
         }else {
             return {
-                fillColor: "#3182bd",
+                fillColor: getColor(feature.properties.Rank),
                 weight: 2,
                 opacity: 1,
-                color: '#3182bd',
-                fillOpacity: 0.3
+                color: '#FFF',
+                dashArray: '3',
+                fillOpacity: 0.7
             };
         }
     }
@@ -215,7 +222,8 @@ $(document).ready(function () {
                 '<b style="color:#f16913">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#f16913">Percentage of Minorities:</b><b> ' + props.MinorityPercentage + '%' : '<b style="color:#f16913"> Hover/Click on a county </b>');
         }
         else {
-            this._div.innerHTML = '<h4 style="font: 16px">Info Panel</h4>' + '<b style="color:#3182bd">Select a mode below...</b>';
+            this._div.innerHTML = '<h4 style="font: 16px">ATLEnvJustice Index</h4>' + (props ?
+                '<b style="color:#cb181d">County: </b><b>' + props.NAME + '</b><br/>' + '<b style="color:#cb181d">Rank:</b><b> ' + props.Rank : '<b style="color:#cb181d"> Hover/Click on a county </b>');
         }
     };
 
@@ -268,9 +276,18 @@ $(document).ready(function () {
 
             // loop through our density intervals and generate a label with a colored square for each interval
             for (var i = 0; i < grades.length; i++) {
-                console.log(parseInt(grades[i].substring(0, grades[i].length - 1))+1)
                 this._div.innerHTML +=
                     '<i style="background:' + getColor(parseInt(grades[i].substring(0,grades[i].length-1))+1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+            }
+        } else {
+            var grades = ["1", "3", "7", "14", "18"],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            for (var i = 0; i < grades.length; i++) {
+                this._div.innerHTML +=
+                    '<i style="background:' + getColor(parseInt(grades[i])+1) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
             }
         }

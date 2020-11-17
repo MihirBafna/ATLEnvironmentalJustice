@@ -385,7 +385,7 @@ var config = {
 
 const indexdata = {
     label: 'Counties Ranked',
-    backgroundColor: WW_COLOR,
+    backgroundColor: "#ef3b2c",
     trendlineLinear: {
         style: "rgb(43 ,66 ,255, 0.3)",
         lineStyle: "dotted|solid",
@@ -425,7 +425,7 @@ var indexconfig = {
 
     options: {
         chartArea: {
-            backgroundColor: "#084594"
+            backgroundColor: ""
         },
         responsive: true,
         title: {
