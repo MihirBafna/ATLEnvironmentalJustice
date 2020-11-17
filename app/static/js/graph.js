@@ -514,8 +514,8 @@ document.getElementById('wealth-water').addEventListener('click', function() {
     config.options.scales.xAxes[0].scaleLabel.labelString = "Income Per Capita ($)";
     config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality (# of Contaminants)";
     // Ticks
-    config.options.scales.yAxes[0].ticks.min = 4;
-    config.options.scales.yAxes[0].ticks.max = 13;
+    config.options.scales.yAxes[0].ticks.min = 7;
+    config.options.scales.yAxes[0].ticks.max = 12;
     config.options.scales.xAxes[0].ticks.min = 15000;
     config.options.scales.xAxes[0].ticks.max = 40000;
 
@@ -534,8 +534,8 @@ document.getElementById('race-water').addEventListener('click', function() {
     config.options.scales.yAxes[0].scaleLabel.labelString = "Water Quality (# of Contaminants)";
 
     // Ticks 
-    config.options.scales.yAxes[0].ticks.min = 4;
-    config.options.scales.yAxes[0].ticks.max = 13;
+    config.options.scales.yAxes[0].ticks.min = 7;
+    config.options.scales.yAxes[0].ticks.max = 12;
     config.options.scales.xAxes[0].ticks.min = 20;
     config.options.scales.xAxes[0].ticks.max = 95;
 
@@ -555,7 +555,7 @@ document.getElementById('wealth-air').addEventListener('click', function() {
 
     // Ticks
     
-    config.options.scales.yAxes[0].ticks.min = 8;
+    config.options.scales.yAxes[0].ticks.min = 14;
     config.options.scales.yAxes[0].ticks.max = 28;
     config.options.scales.xAxes[0].ticks.min = 15000;
     config.options.scales.xAxes[0].ticks.max = 40000;
@@ -575,7 +575,7 @@ document.getElementById('race-air').addEventListener('click', function() {
     config.options.scales.yAxes[0].scaleLabel.labelString = "Air Quality Index";
 
     // Ticks
-    config.options.scales.yAxes[0].ticks.min = 8;
+    config.options.scales.yAxes[0].ticks.min = 14;
     config.options.scales.yAxes[0].ticks.max = 28;
     config.options.scales.xAxes[0].ticks.min = 20;
     config.options.scales.xAxes[0].ticks.max = 100; 
