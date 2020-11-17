@@ -5,6 +5,40 @@ const RA_COLOR = "rgba(255, 54, 174,1)";
 
 const GRAPH = document.getElementById("dataGraph");
 
+const indexdata = {
+    label: 'Counties Ranked',
+    backgroundColor: "#ef3b2c",
+    trendlineLinear: {
+        style: "rgb(43 ,66 ,255, 0.3)",
+        lineStyle: "dotted|solid",
+        width: 2
+    },
+    fill: false,
+    data: [
+    ],
+};
+
+var airqualities = [];
+var waterqualities=[];
+var monies = [];
+
+for(var i=0;i<20;i++){
+    airqualities.push(parseInt(data.features[i].properties.AirQuality))
+    waterqualities.push(parseInt(data.features[i].properties.Contaminants))
+    monies.push(parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)));
+}
+// console.log(Math.min(airqualities),Math.max(air))
+var reglist = []
+for (var i = 0; i < 20; i++) {
+    var env = (parseInt(parseInt(data.features[i].properties.AirQuality)- Math.min.apply(Math,airqualities))/(Math.max.apply(Math,airqualities)-Math.min.apply(Math,airqualities))+ (data.features[i].properties.Contaminants-Math.min.apply(Math,waterqualities))/(Math.max.apply(Math,waterqualities)-Math.min.apply(Math,waterqualities)))/2;
+    var soc = (parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)) - Math.min.apply(Math, monies)) / (Math.max.apply(Math, monies) - Math.min.apply(Math, monies));
+    sc = Math.round((soc + Number.EPSILON) * 100) / 100;
+    indexdata.data.push({ x: 1-env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
+    var list = [1 - env.toFixed(2), sc.toFixed(2)];
+    reglist.push(list);
+}
+
+
 const wealth_wat = {
     label: 'Counties',
     backgroundColor: WW_COLOR,
@@ -275,9 +309,19 @@ var raReg = {
     data: [],
 };
 
+var indexReg = {
+    label: "",
+    showLine: true,
+    fill: false, 
+    backgroundColor: "rgb(0,0,0,0)",
+    pointBorderColor: "rgb(0,0,0,0)",
+    borderColor: "#ef3b2c",
+    data: [],
+};
 
-var tempList = [wealth_wat,race_wat,wealth_air,race_air];
-var outputList = [wwReg,rwReg,waReg,raReg];
+
+var tempList = [wealth_wat,race_wat,wealth_air,race_air,indexdata];
+var outputList = [wwReg,rwReg,waReg,raReg,indexReg];
 for (let index = 0; index < tempList.length; index++) {
     var n = tempList[index].data.length;
     var avgX = 0;
@@ -287,14 +331,14 @@ for (let index = 0; index < tempList.length; index++) {
     for (let i = 0; i < n; i++) {
         var xVal, yVal;
         if(typeof tempList[index].data[i].x == "string") {
-            xVal = parseInt(tempList[index].data[i].x,10);
+            xVal = parseFloat(tempList[index].data[i].x);
         }
         else {
             xVal = tempList[index].data[i].x;
         }
 
         if(typeof tempList[index].data[i].y == "string") {
-            yVal = parseInt(tempList[index].data[i].y,10);
+            yVal = parseFloat(tempList[index].data[i].y);
         }
         else {
             yVal = tempList[index].data[i].y;
@@ -311,8 +355,15 @@ for (let index = 0; index < tempList.length; index++) {
     denom -= n * avgX * avgX;
 
     m = numerator / denom;
-
-    if(index % 2 == 0) {
+    if (index == 4) {
+        let xVal1 = 0;
+        let yVal1 = avgY + m * (xVal1 - avgX);
+        let xVal2 = 1.0;
+        let yVal2 = avgY + m * (xVal2 - avgX);
+        outputList[index].data.push({x: xVal1, y: yVal1});
+        outputList[index].data.push({x: xVal2, y: yVal2});
+    }
+    else if(index % 2 == 0) {
         let xVal1 = 15000;
         let yVal1 = avgY + m * (xVal1 - avgX);
         let xVal2 = 40000;
@@ -383,42 +434,11 @@ var config = {
 
 }
 
-const indexdata = {
-    label: 'Counties Ranked',
-    backgroundColor: "#ef3b2c",
-    trendlineLinear: {
-        style: "rgb(43 ,66 ,255, 0.3)",
-        lineStyle: "dotted|solid",
-        width: 2
-    },
-    fill: false,
-    data: [
-    ],
-};
 
-var airqualities = [];
-var waterqualities=[];
-var monies = [];
-
-for(var i=0;i<20;i++){
-    airqualities.push(parseInt(data.features[i].properties.AirQuality))
-    waterqualities.push(parseInt(data.features[i].properties.Contaminants))
-    monies.push(parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)));
-}
-// console.log(Math.min(airqualities),Math.max(air))
-var reglist = []
-for (var i = 0; i < 20; i++) {
-    var env = (parseInt(parseInt(data.features[i].properties.AirQuality)- Math.min.apply(Math,airqualities))/(Math.max.apply(Math,airqualities)-Math.min.apply(Math,airqualities))+ (data.features[i].properties.Contaminants-Math.min.apply(Math,waterqualities))/(Math.max.apply(Math,waterqualities)-Math.min.apply(Math,waterqualities)))/2;
-    var soc = (parseInt(data.features[i].properties.IncomePerCapita.substring(1, 3)) - Math.min.apply(Math, monies)) / (Math.max.apply(Math, monies) - Math.min.apply(Math, monies));
-    sc = Math.round((soc + Number.EPSILON) * 100) / 100;
-    indexdata.data.push({ x: 1-env.toFixed(2), y: sc.toFixed(2), name: data.features[i].properties.NAME });
-    var list = [1 - env.toFixed(2), sc.toFixed(2)];
-    reglist.push(list);
-}
 var indexconfig = {
     type: "scatter",
     data: {
-        datasets: [indexdata],
+        datasets: [indexdata,indexReg],
         radius: 7,
         hoverRadius: 8,
     },
@@ -471,27 +491,6 @@ var indexconfig = {
 
 }
 
-
-
-const indexRegression = regression.linear(
-    reglist
-);
-const points = indexRegression.points.map(([x, y]) => {
-    return y;
-    // or {x, y}, depending on whether you just want y-coords for a 'linear' plot
-    // or x&y for a 'scatterplot'
-})
-console.log(reglist);
-console.log(points);
-var indexreg = {
-    label: "",
-    showLine: true,
-    fill: false,
-    backgroundColor: "rgb(0,0,0,0)",
-    pointBorderColor: "rgb(0,0,0,0)",
-    borderColor: RA_COLOR,
-    data: points,
-};
 
 
 Chart.defaults.global.defaultFontColor = 'white';
